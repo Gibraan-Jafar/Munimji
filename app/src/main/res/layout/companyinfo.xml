@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Company name"
+        android:id="@+id/tv44"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_companyname_cinfo"
+        android:layout_toRightOf="@+id/tv44"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv45"
+        android:layout_below="@+id/tv44"
+        android:text="contact person"
+        android:layout_marginTop="30dp"/>
+    <EditText
+        android:id="@+id/et_contactperson_cinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_companyname_cinfo"
+        android:layout_toRightOf="@+id/tv45"
+        android:layout_marginLeft="30dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv46"
+        android:layout_below="@+id/tv45"
+        android:layout_marginTop="30dp"
+       android:text="Mobile NO" />
+    <EditText
+        android:id="@+id/et_contactphone_cinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:layout_below="@id/et_contactperson_cinfo"
+        android:layout_toRightOf="@+id/tv46"
+        android:layout_marginLeft="60dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv47"
+        android:text="Description"
+        android:layout_below="@+id/tv46"
+        android:layout_marginTop="30dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_desc_cinfo"
+        android:layout_below="@+id/et_contactphone_cinfo"
+        android:layout_toRightOf="@+id/tv47"
+        android:layout_marginLeft="60dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btsubmint_cinfo"
+        android:layout_below="@+id/et_desc_cinfo"
+        android:layout_toRightOf="@+id/tv47"
+        android:text="Submit"
+        android:layout_marginLeft="80dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btshow_cinfo"
+        android:text="show"
+        android:layout_below="@+id/et_desc_cinfo"
+        android:layout_toRightOf="@+id/btsubmint_cinfo"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv48"
+        android:text="Description"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_desc_help"
+        android:layout_toRightOf="@+id/tv48"
+        android:layout_marginLeft="30dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv49"
+        android:text="Contact NO"
+        android:layout_below="@+id/tv48"
+        android:layout_marginTop="30dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_cno_help"
+        android:inputType="phone"
+        android:layout_below="@id/et_desc_help"
+        android:layout_toRightOf="@+id/tv49"
+        android:layout_marginLeft="30dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv50"
+        android:layout_below="@+id/tv49"
+        android:text="Email id:"
+        android:layout_marginTop="30dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_email_help"
+        android:inputType="textEmailAddress"
+        android:layout_below="@+id/et_cno_help"
+        android:layout_toRightOf="@+id/tv50"
+        android:layout_marginLeft="40dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD"
+        android:id="@+id/bt_add_help"
+        android:layout_below="@+id/et_email_help"
+        android:layout_toRightOf="@+id/tv50"
+        android:layout_marginLeft="60dp"/>
+    <ScrollView
+        android:layout_below="@+id/bt_add_help"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:id="@+id/table_help"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="0,1,2">
+            <TextView />
+
+            <TableRow
+                >
+                <TextView
+                    android:background="@drawable/shape"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="Description"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    />
+                <TextView
+                    android:background="@drawable/shape"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="ContactNumber"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    />
+                <TextView
+                    android:background="@drawable/shape"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="Email Id"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    />
+            </TableRow>
+        </TableLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

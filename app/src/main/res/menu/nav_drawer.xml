@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Home"
+        android:id="@+id/nav_item_home"
+       />
+    <item android:title="FIXED DEPOSITES"
+        android:id="@+id/nav_FIX_DEPO"
+        />
+    <item android:title="New Page"
+        android:id="@+id/nav_item_newp"
+        />
+    <item android:title="Export"
+        android:id="@+id/nav_item_export"
+        />
+    <item android:title="Import"
+        android:id="@+id/nav_item_import"
+        />
+    <item android:title="Others">
+        <menu>
+            <item
+                android:title="Backups"
+                />
+            <item
+                android:title="Restore"
+                />
+        </menu>
+    </item>
+    <group android:id="@+id/group_settings_id">
+        <item android:title="Notifications"></item>
+
+        <item android:title="Help"></item>
+
+    </group>
+</menu>

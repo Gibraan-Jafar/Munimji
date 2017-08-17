@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <HorizontalScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/hsv_detpin"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="100dp">
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/sv_detpin"
+            android:layout_alignTop="@+id/hsv_detpin"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+
+                android:id="@+id/tl_detpin">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@+id/tl_detpin"
+
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Transid"
+                        android:padding="5dp"
+                        android:textSize="28sp"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/Flatno_detpin"
+
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AMT"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/tamount_detpin"
+                        android:padding="5dp"
+                        android:textSize="28sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/date_detpin"
+                        android:padding="5dp"
+                        android:textSize="28sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MODE"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/mode_detpin"
+
+                        android:padding="5dp"
+                        android:textSize="28sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="check/transno"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/check_detpin"
+
+                        android:padding="5dp"
+                        android:textSize="28sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="branch"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/branch_detpin"
+
+                        android:padding="5dp"
+                        android:textSize="28sp"/>
+
+                </TableRow>
+
+
+            </TableLayout>
+
+
+        </ScrollView>
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Flatno:"
+        android:id="@+id/tv_name_detpayin"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/tv_flat_detpayin"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tv_name_detpayin"
+        android:layout_toEndOf="@+id/tv_name_detpayin"
+        android:layout_marginLeft="57dp"
+        android:layout_marginStart="57dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="export"
+        android:id="@+id/bt_expdet"
+        android:layout_below="@+id/tv_name_detpayin"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv37"
+        android:ems="7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name of Tenant"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/et_name_tenant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:layout_toRightOf="@id/tv37"
+        android:ems="8"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:id="@+id/tv38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv37"
+        android:text="Flatno"
+        android:ems="7"
+        android:layout_marginTop="20dp"/>
+    <AutoCompleteTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_flatno_tenant"
+        android:layout_below="@id/et_name_tenant"
+        android:layout_toRightOf="@id/tv38"
+        android:ems="8"
+        android:layout_marginLeft="20dp"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv39"
+        android:text="JOIN DATE"
+        android:ems="7"
+        android:layout_below="@id/tv38"
+        android:layout_marginTop="25dp"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_joindate_tenant"
+        android:layout_below="@+id/et_flatno_tenant"
+        android:layout_toRightOf="@+id/tv39"
+        android:ems="6"
+        android:layout_marginLeft="20dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_joindate_tenant"
+        android:layout_below="@id/et_flatno_tenant"
+        android:layout_toRightOf="@id/et_joindate_tenant"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Left Date"
+        android:layout_below="@id/et_joindate_tenant"
+        android:ems="7"
+        android:id="@+id/tv40"
+        android:layout_marginTop="25dp"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_leftdate_tenant"
+        android:layout_below="@+id/et_joindate_tenant"
+        android:layout_toRightOf="@id/tv40"
+        android:ems="6"
+        android:layout_marginLeft="25dp"/>
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_leftdate_tenant"
+        android:layout_below="@id/et_joindate_tenant"
+        android:layout_toRightOf="@id/et_leftdate_tenant"/>
+
+
+    <TextView
+        android:id="@+id/tv10"
+        android:ems="7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mobile"
+        android:layout_below="@id/bt_leftdate_tenant"
+        android:layout_marginTop="10dp"
+        />
+    <EditText
+        android:id="@+id/et_mobile_tenant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv10"
+        android:ems="8"
+        android:layout_below="@id/bt_leftdate_tenant"
+        android:layout_marginLeft="20dp"
+        />
+    <TextView
+        android:id="@+id/tv11"
+        android:ems="7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="email"
+        android:layout_below="@id/tv10"
+        android:layout_marginTop="20dp"
+        />
+    <EditText
+        android:id="@+id/et_email_tenant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv10"
+        android:ems="8"
+        android:layout_below="@id/et_mobile_tenant"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="vehicle number"
+        android:id="@+id/tv12"
+        android:layout_below="@+id/et_email_tenant"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ly_add_numvech_tenant"
+        android:orientation="vertical"
+        android:layout_below="@+id/et_email_tenant"
+        android:layout_toRightOf="@id/tv12"
+        android:layout_marginLeft="30dp"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/hly_addvech_tenant">
+
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="4"
+                android:id="@+id/et_vech_num_tenant"
+                />
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/bt_addvech_newtenant"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/et_vech_num_tenant"
+                android:layout_below="@+id/et_num_vech_own"
+                android:background="@drawable/add"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_submit_tenant"
+        android:text="Submit"
+        android:layout_below="@+id/ly_add_numvech_tenant"
+        android:layout_toRightOf="@+id/tv40"/>
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_show_teant"
+        android:text="show"  android:layout_below="@+id/ly_add_numvech_tenant"
+        android:layout_toRightOf="@+id/bt_submit_tenant"/>
+    </RelativeLayout>
+</ScrollView>
+</RelativeLayout>

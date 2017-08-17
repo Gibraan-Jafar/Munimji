@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Company name"
+        android:id="@+id/textView14"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp" />
+
+    <AutoCompleteTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_cname_pout"
+        android:layout_alignTop="@+id/textView14"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="39dp"
+        android:layout_marginEnd="39dp"
+        android:layout_toRightOf="@+id/btsubmitpout"
+        android:layout_toEndOf="@+id/btsubmitpout">
+    </AutoCompleteTextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:id="@+id/textView15"
+        android:layout_below="@+id/et_cname_pout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_amount_pout"
+        android:layout_alignTop="@+id/textView15"
+        android:layout_alignLeft="@+id/et_cname_pout"
+        android:layout_alignStart="@+id/et_cname_pout"
+        android:layout_alignRight="@+id/et_cname_pout"
+        android:layout_alignEnd="@+id/et_cname_pout"
+        android:inputType="phone"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:id="@+id/textView16"
+        android:layout_below="@+id/rl_online_pout"
+        android:layout_alignRight="@+id/textView15"
+        android:layout_alignEnd="@+id/textView15"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_date_pout"
+        android:layout_alignTop="@+id/textView16"
+        android:layout_alignRight="@+id/bt_cheque_pout"
+        android:layout_alignEnd="@+id/bt_cheque_pout" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_date_pout"
+        android:textSize="30dp"
+        android:layout_alignBottom="@+id/et_date_pout"
+        android:layout_alignLeft="@+id/bt_online_pout"
+        android:layout_alignStart="@+id/bt_online_pout" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/btsubmitpout"
+        android:layout_below="@+id/bt_date_pout"
+       android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List"
+        android:id="@+id/btlistpout"
+        android:layout_below="@+id/bt_date_pout"
+        android:layout_toRightOf="@+id/btsubmitpout"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+ />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mode "
+        android:id="@+id/textView17"
+        android:layout_below="@+id/et_amount_pout"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cash"
+        android:id="@+id/bt_cash_pout"
+        android:layout_below="@+id/et_amount_pout"
+        android:layout_toRightOf="@+id/bt_cheque_pout"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cheque"
+        android:id="@+id/bt_cheque_pout"
+        android:layout_below="@+id/et_amount_pout"
+        android:layout_toRightOf="@+id/textView17"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="online"
+        android:id="@+id/bt_online_pout"
+        android:layout_toRightOf="@id/bt_cash_pout"
+        android:layout_below="@+id/et_amount_pout"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_cheque_pout"
+        android:layout_below="@+id/bt_cash_pout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cheque NO"
+            android:id="@+id/textView18"
+          />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/et_check_pout"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="22dp"
+            android:layout_marginEnd="22dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Branch"
+            android:id="@+id/textView19"
+            android:layout_below="@+id/et_check_pout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+             />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_branch_pout"
+            android:layout_alignTop="@+id/textView19"
+            android:layout_alignLeft="@+id/et_check_pout"
+            android:layout_alignStart="@+id/et_check_pout"
+            android:layout_alignRight="@+id/et_check_pout"
+            android:layout_alignEnd="@+id/et_check_pout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv43"
+        android:text="chequedate"
+        android:layout_below="@+id/et_branch_pout"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
+
+    <EditText
+        android:id="@+id/et_checkdatepout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      android:layout_toRightOf="@+id/tv43"
+        android:layout_below="@id/et_branch_pout"
+        android:layout_marginLeft="30dp"
+        android:ems="6"/>
+        <Button
+            android:id="@+id/btcheckdated_pout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_branch_pout"
+            android:layout_toRightOf="@+id/et_checkdatepout"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_online_pout"
+        android:layout_below="@+id/rl_cheque_pout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Trans id"
+            android:id="@+id/textView20"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/et_transid_pout"
+            android:layout_marginRight="23dp"
+            android:layout_marginEnd="23dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

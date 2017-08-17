@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout android:id="@+id/relativeLayout1"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_searchVehicle"
+        android:hint="Search Value"
+        android:ems="7"
+
+        android:layout_toRightOf="@id/tvFlatno"
+        android:layout_marginLeft="70dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="search"
+        android:id="@+id/bt_searchVehicle"
+        android:layout_toRightOf="@id/et_searchVehicle"
+        android:layout_marginLeft="20dp"
+        />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:stretchColumns="0,1"
+            android:id="@+id/telephonetable" >
+        </TableLayout>
+    </ScrollView>
+</LinearLayout>

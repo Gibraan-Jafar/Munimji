@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="from"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="to"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/textView2"
+        android:layout_above="@+id/btdatepick_listpin"
+        android:layout_toRightOf="@+id/btdatepick_listpin" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="select year"
+        android:inputType="number"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_from_lispin"
+        android:inputType="phone"
+        android:layout_alignBottom="@+id/btdatepick_listpin"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_to_listpin"
+        android:inputType="number"
+        android:layout_toRightOf="@+id/btdatepick_listpin"
+        android:layout_below="@+id/textView2"
+        android:layout_marginLeft="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="f"
+        android:id="@+id/btdatepick_listpin"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_toRightOf="@+id/et_from_lispin"
+        android:layout_toEndOf="@+id/et_from_lispin" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="t"
+        android:id="@+id/bt_to_listpin"
+        android:layout_alignBottom="@+id/et_to_listpin"
+        android:layout_toRightOf="@+id/et_to_listpin"
+        android:layout_toEndOf="@+id/et_to_listpin" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="submit"
+        android:id="@+id/btsubmit_listpin"
+        android:layout_below="@+id/spinner_listpayin"
+        android:layout_centerHorizontal="true" />
+
+    <HorizontalScrollView
+
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/hsv_listpin"
+        android:layout_below="@+id/btsubmit_listpin"
+
+        >
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/sv_listpin"
+
+            android:layout_alignParentBottom="true">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/btsubmit_listpin"
+                android:id="@+id/tl_listpin">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@+id/hsv_listpin"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Flatno"
+                        android:padding="5dp"
+                        android:textSize="28sp"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/Flatno_listpin"
+                        android:layout_column="0"
+
+
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="T.AMT"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/tamount_listpin"
+                        android:layout_column="1"
+                        android:padding="5dp"
+                        android:textSize="28sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="APRIL"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/tvapril_listpin"
+                        android:layout_column="2"
+                        android:padding="5dp"
+                        android:textSize="28sp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MAY"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:padding="5dp"
+                        android:textSize="28sp"
+                        android:id="@+id/tvmay_listpin"
+                        android:layout_column="3" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JUNE"
+                        android:padding="5dp"
+                        android:textSize="28sp"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/tvJUNE_listpin"
+                        android:layout_column="4" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JULY"
+                        android:padding="5dp"
+                        android:textSize="28sp"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+
+                        android:id="@+id/tvjuly_listpin"
+                        android:layout_column="5" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AUGUST"
+                        android:padding="5dp"
+                        android:textSize="28sp"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/tvaugust_listpin"
+                        android:layout_column="6" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SEPT"
+                        android:padding="5dp"                        android:textSize="28sp"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/tvsept_listpin"
+                        android:layout_column="7" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OCT"
+                        android:padding="5dp"
+                        android:textSize="28sp"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/tvoct_listpin"
+                        android:layout_column="8" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NOV"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:padding="5dp"
+                        android:textSize="28sp"
+                        android:id="@+id/tvnovember_listpin"
+                        android:layout_column="9" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DEC"
+                        android:padding="5dp"
+                        android:textSize="28sp"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/tvdec_listpin"
+                        android:layout_column="10" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JAN"
+                        android:padding="5dp"
+                        android:textSize="28sp"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/tvjan_listpin"
+                        android:layout_column="11" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FEB"
+                        android:padding="5dp"
+                        android:textSize="28sp"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/tvfeb_listpin"
+                        android:layout_column="12" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MARCH"
+                        android:padding="5dp"
+                        android:textSize="28sp"
+                        android:background="@drawable/shape"
+                        android:textAlignment="center"
+                        android:id="@+id/tvmarch_listpin"
+                        android:layout_column="13"
+
+                        />
+
+
+                </TableRow>
+
+
+            </TableLayout>
+
+
+        </ScrollView>
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CASH"
+        android:background="#ff0000"
+        android:id="@+id/textView21"
+        android:textColor="#ffff00"
+        android:layout_above="@+id/hsv_listpin"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ONLINE"
+        android:background="#ff0000"
+        android:textColor="#ffffff"
+        android:id="@+id/textView22"
+        android:layout_alignTop="@+id/textView21"
+        android:layout_toRightOf="@+id/textView21"
+        android:layout_toEndOf="@+id/textView21" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cheque"
+        android:background="#ff0000"
+        android:id="@+id/textView23"
+        android:textColor="#0000ff"
+        android:layout_alignTop="@+id/textView22"
+        android:layout_toRightOf="@+id/textView22"
+        android:layout_toEndOf="@+id/textView22" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Payment for"
+        android:id="@+id/textView31"
+        android:layout_below="@+id/et_from_lispin"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_listpayin"
+        android:layout_below="@+id/btdatepick_listpin"
+        android:layout_alignLeft="@+id/btsubmit_listpin"
+        android:layout_alignStart="@+id/btsubmit_listpin"
+        android:spinnerMode="dropdown" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="export"
+        android:id="@+id/btexp_listpayin"
+        android:layout_alignTop="@+id/btsubmit_listpin"
+        android:layout_toRightOf="@+id/btsubmit_listpin"
+        android:layout_toEndOf="@+id/btsubmit_listpin" />
+
+
+</RelativeLayout>
