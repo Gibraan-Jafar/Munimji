@@ -19,7 +19,8 @@
                 android:text="Flatno"
                 android:id="@+id/tvFlatno"
                 android:layout_marginTop="20dp"
-                />
+                android:layout_alignRight="@+id/tvmobile12_pown"
+                android:layout_alignEnd="@+id/tvmobile12_pown" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -37,12 +38,13 @@
                 android:text="Name"
                 android:id="@+id/tvName"
                 android:layout_weight="0.05"
-                android:layout_marginTop="20dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:ems="5"
-                android:layout_below="@+id/tvFlatno"
-                 />
+                android:layout_alignBaseline="@+id/etname"
+                android:layout_alignBottom="@+id/etname"
+                android:layout_alignLeft="@+id/tvFlatno"
+                android:layout_alignStart="@+id/tvFlatno" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -71,9 +73,8 @@
                 android:id="@+id/etmobile_own"
                 android:hint="mobile no"
                 android:layout_below="@+id/etname"
-                android:layout_toRightOf="@+id/tvmobile12_pown"
-                android:layout_marginLeft="40dp"
-               />
+                android:layout_alignLeft="@+id/etname"
+                android:layout_alignStart="@+id/etname" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,20 +90,20 @@
                 android:inputType="textEmailAddress"
                 android:ems="10"
                 android:id="@+id/et_email_own"
-                android:layout_below="@+id/etmobile_own"
-                android:layout_toRightOf="@id/textView32"
-                android:layout_marginLeft="50dp"
                 android:hint="Email address"
-                />
+                android:layout_below="@+id/etmobile_own"
+                android:layout_alignLeft="@+id/etmobile_own"
+                android:layout_alignStart="@+id/etmobile_own" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2 Wheelers"
                 android:id="@+id/textView33"
-                android:layout_below="@+id/et_email_own"
-                android:layout_marginTop="10dp"
-                />
+                android:layout_marginTop="12dp"
+                android:layout_alignTop="@+id/ly_add_numvech2"
+                android:layout_alignLeft="@+id/tvName"
+                android:layout_alignStart="@+id/tvName" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,15 +117,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/hly_addvech2">
+
                     <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="textMultiLine"
-                        android:ems="10"
                         android:id="@+id/et_2Wheeler"
+                        android:layout_width="179dp"
+                        android:layout_height="wrap_content"
                         android:layout_below="@+id/et_email_own"
+                        android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@id/textView33"
-                        android:layout_marginLeft="10dp" />
+                        android:ems="10"
+                        android:inputType="textMultiLine" />
+
                     <Button
                         android:layout_width="30dp"
                         android:layout_height="30dp"
@@ -141,9 +144,10 @@
                 android:layout_height="wrap_content"
                 android:text="4 Wheelers"
                 android:id="@+id/textView34"
-                android:layout_below="@+id/ly_add_numvech2"
-                android:layout_marginTop="10dp"
-                />
+                android:layout_marginTop="12dp"
+                android:layout_alignTop="@+id/ly_add_numvech"
+                android:layout_toLeftOf="@+id/ly_add_numvech2"
+                android:layout_toStartOf="@+id/ly_add_numvech2" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -160,7 +164,7 @@
                         android:id="@+id/hly_addvech">
 
                         <EditText
-                            android:layout_width="wrap_content"
+                            android:layout_width="178dp"
                             android:layout_height="wrap_content"
                             android:inputType="textMultiLine"
                             android:ems="10"
