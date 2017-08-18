@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -57,7 +58,7 @@ public class Listpaymentin_index extends Fragment implements NumberPicker.OnValu
 
 
     DataBaseHelper myDb;
-    EditText et_to, et_from;
+    Spinner spinner_to, spinner_from;
     ExpandableListView lv;
     int rowno;
     final int DATE_PICKER_ID = 1111;
@@ -69,6 +70,7 @@ public class Listpaymentin_index extends Fragment implements NumberPicker.OnValu
     int rentt ;
     int rento ;
     List<String> categories = new ArrayList<String>();
+    ArrayList<String> years = new ArrayList<>();
     String ptype;
     final int tamountexpectednoT = 12 * 1000;
     TableLayout tbl;
@@ -92,27 +94,23 @@ public class Listpaymentin_index extends Fragment implements NumberPicker.OnValu
 
         tbl = (TableLayout) view.findViewById(R.id.tl_listpin);
         tbl.setClickable(true);
-        et_from = (EditText) view.findViewById(R.id.et_from_lispin);
-        et_to = (EditText) view.findViewById(R.id.et_to_listpin);
-        bt_from = (Button) view.findViewById(R.id.btdatepick_listpin);
-        bt_to = (Button) view.findViewById(R.id.bt_to_listpin);
+        spinner_from = (Spinner) view.findViewById(R.id.spinner_from_lispin);
+        spinner_to = (Spinner) view.findViewById(R.id.spinner_to_listpin);
         bt_submit = (Button) view.findViewById(R.id.btsubmit_listpin);
         bt_exp=(Button)view.findViewById(R.id.btexp_listpayin);
         Calendar calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         int temp = calendar.get(Calendar.MONTH);
         //System.out.println(temp);
-        if(temp<3){
-            et_from.setText(String.valueOf(year - 1));
-            et_to.setText(String.valueOf(year));}
-        else
-        {
-            et_from.setText(String.valueOf(year ));
-            et_to.setText(String.valueOf(year+1));
+
+        for(int i = 2010; i<2030; i++){
+            years.add(String.valueOf(i));
         }
 
+        ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,years);
 
-
+        spinner_from.setAdapter(arrayAdapter);
+        spinner_to.setAdapter(arrayAdapter);
 
         bt_exp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,22 +168,7 @@ public class Listpaymentin_index extends Fragment implements NumberPicker.OnValu
 
 
 
-        bt_to.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mode = 1;//to year
-                show(v.getId());
-            }
-        });
-        bt_from.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mode = 2;//from
-                // showDialog(DATE_PICKER_ID);
-                show(v.getId());
 
-            }
-        });
         //spinner
         spinner=(Spinner)view.findViewById(R.id.spinner_listpayin);
         Cursor x=myDb.getalldata();
@@ -428,18 +411,18 @@ public class Listpaymentin_index extends Fragment implements NumberPicker.OnValu
                         int flatid=Integer.valueOf((Integer) iteratorflatid.next());
                         String tempflatno = iteratorf.next().toString();
                         //tenant = (Integer)iteratort.next();
-                       // System.out.println(flatid + " , "+et_from.getText().toString() + " , "+et_to.getText().toString()+"  "+ptype.toString());
+                       // System.out.println(flatid + " , "+spinner_from.getText().toString() + " , "+spinner_to.getText().toString()+"  "+ptype.toString());
 
 
                         //
                         if(ptype.equalsIgnoreCase("all")) {
                             //System.out.println("hello showing all");
-                            res1 = myDb.listpaymentin(flatid, et_from.getText().toString(), et_to.getText().toString());
+                            res1 = myDb.listpaymentin(flatid, spinner_from.getSelectedItem().toString(), spinner_to.getSelectedItem().toString());
 
                         }
                         else
                         {    Toast.makeText(getActivity(),ptype, Toast.LENGTH_LONG).show();
-                            res1=myDb.listpaymentin(flatid, et_from.getText().toString(), et_to.getText().toString(),ptype);
+                            res1=myDb.listpaymentin(flatid, spinner_from.getSelectedItem().toString(), spinner_to.getSelectedItem().toString(),ptype);
                         }
 
 
@@ -999,8 +982,8 @@ public class Listpaymentin_index extends Fragment implements NumberPicker.OnValu
                                         public void onClick(DialogInterface dialog, int which) {
                                            Intent i=new Intent(getActivity(),Detail_paymentin.class);
                                             i.putExtra("flatno",tv.getText().toString());
-                                            i.putExtra("from",et_from.getText().toString());
-                                            i.putExtra("to",et_to.getText().toString());
+                                            i.putExtra("from", spinner_from.getSelectedItem().toString());
+                                            i.putExtra("to", spinner_to.getSelectedItem().toString());
                                             i.putExtra("type",ptype);
                                             startActivity(i);
                                         }
@@ -1041,16 +1024,7 @@ public class Listpaymentin_index extends Fragment implements NumberPicker.OnValu
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mode == 1) {
-                    et_to.setText(String.valueOf(np.getValue()));
-                    d.dismiss();
-                } else if (mode == 2) {
-                    et_from.setText(String.valueOf(np.getValue()));
-                    d.dismiss();
-                } else {
-                    Toast.makeText(getActivity(), "pls select year", Toast.LENGTH_LONG).show();
 
-                }
             }
         });
 
