@@ -14,14 +14,15 @@
 
         android:layout_toRightOf="@id/tvFlatno"
         android:layout_marginLeft="70dp"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="search"
-        android:id="@+id/bt_searchVehicle"
-        android:layout_toRightOf="@id/et_searchVehicle"
-        android:layout_marginLeft="20dp"
-        />
+
+        <Button
+            android:id="@+id/bt_searchVehicle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/et_searchVehicle"
+            android:background="#eeffaa"
+            android:text="search" />
     </RelativeLayout>
     <ScrollView
         android:layout_width="wrap_content"

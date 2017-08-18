@@ -4,33 +4,42 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="month charges "
-        android:id="@+id/textView24"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:background="#fff"
+        android:text="Monthly charges:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="24sp" />
 
     <TextView
+        android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:text="Flats with tenant:"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="flats with tenant"
-        android:id="@+id/textView25"
+        android:textColor="#000"
         android:layout_below="@+id/textView24"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
 
     <TextView
+        android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="No tenants"
-        android:id="@+id/textView26"
-        android:layout_below="@+id/textView25"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="52dp" />
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:layout_below="@+id/et_rentt_settings"
+        android:layout_alignLeft="@+id/textView25"
+        android:layout_alignStart="@+id/textView25" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -38,9 +47,12 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/et_rentt_settings"
-        android:layout_below="@+id/textView24"
-        android:layout_toRightOf="@+id/textView25"
-        android:layout_toEndOf="@+id/textView25" />
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp"
+        android:layout_alignBaseline="@+id/textView25"
+        android:layout_alignBottom="@+id/textView25"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -48,9 +60,10 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/et_rento_settings"
-        android:layout_alignTop="@+id/textView26"
-        android:layout_alignRight="@+id/et_rentt_settings"
-        android:layout_alignEnd="@+id/et_rentt_settings" />
+        android:layout_alignBaseline="@+id/textView26"
+        android:layout_alignBottom="@+id/textView26"
+        android:layout_alignLeft="@+id/et_rentt_settings"
+        android:layout_alignStart="@+id/et_rentt_settings" />
 
     <Button
         android:layout_width="wrap_content"
