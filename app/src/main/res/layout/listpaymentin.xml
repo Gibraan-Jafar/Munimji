@@ -283,16 +283,34 @@
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_alignTop="@+id/textView3"
-        android:layout_toLeftOf="@+id/btsubmit_listpin"
-        android:layout_toStartOf="@+id/btsubmit_listpin" />
+        android:layout_toRightOf="@+id/textView31"
+        android:layout_toEndOf="@+id/textView31" />
 
     <Spinner
         android:id="@+id/spinner_to_listpin"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_alignTop="@+id/spinner_from_lispin"
-        android:layout_toEndOf="@+id/spinner_listpayin"
-        android:layout_toRightOf="@+id/spinner_listpayin" />
+        android:layout_alignLeft="@+id/btexp_listpayin"
+        android:layout_alignStart="@+id/btexp_listpayin" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From:"
+        android:layout_alignTop="@+id/spinner_from_lispin"
+        android:layout_toLeftOf="@+id/textView23"
+        android:layout_toStartOf="@+id/textView23" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To:"
+        android:layout_alignTop="@+id/spinner_to_listpin"
+        android:layout_toLeftOf="@+id/btexp_listpayin"
+        android:layout_toStartOf="@+id/btexp_listpayin" />
 
 
 </RelativeLayout>
