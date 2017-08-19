@@ -236,7 +236,7 @@
         android:id="@+id/spinner_from"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_alignTop="@+id/textView3"
+        android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/btexp_listpayout"
         android:layout_alignStart="@+id/btexp_listpayout" />
 
