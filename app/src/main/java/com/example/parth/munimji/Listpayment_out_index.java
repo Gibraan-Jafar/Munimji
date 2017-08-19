@@ -21,9 +21,11 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -41,8 +43,8 @@ import java.util.List;
  * Created by parth on 1/7/16.
  */
 public class Listpayment_out_index extends Fragment implements NumberPicker.OnValueChangeListener{
-    EditText et_to, et_from;
-    Button bt_from, bt_to, bt_submit,exp;
+    Spinner spinner_to, spinner_from;
+    Button  bt_submit,exp;
     TextView tvcname, tvamount, tvjan, tvfeb, tvmarch, tvapril, tvmay, tvjune, tvjuly, tvaugest, tvsept, tvoct, tvnov, tvdec;
     final int DATE_PICKER_ID = 1111;
     String buffer[];
@@ -51,6 +53,7 @@ public class Listpayment_out_index extends Fragment implements NumberPicker.OnVa
     int year, cname_count, Tamount,grantotal,tjan,tfeb,tmarch,tapril,tmay,tjune,tjuly,taugust,tsept,toct,tnov,tdec;
     TableLayout tbl, tblnew;
     TableRow tbrow1, tbr2;
+    ArrayList<String> years = new ArrayList<>();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -128,39 +131,22 @@ public class Listpayment_out_index extends Fragment implements NumberPicker.OnVa
         tbl.setClickable(true);
 
 
-        et_from = (EditText) view.findViewById(R.id.et_from_lispout);
-        et_to = (EditText) view.findViewById(R.id.et_to_listpout);
-        bt_from = (Button) view.findViewById(R.id.btdatepick_listpout);
-        bt_to = (Button) view.findViewById(R.id.bt_to_listpout);
+        spinner_from = (Spinner) view.findViewById(R.id.spinner_from);
+        spinner_to = (Spinner) view.findViewById(R.id.spinner_to);
         bt_submit = (Button) view.findViewById(R.id.btsubmit_listpout);
         Calendar calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         int temp = calendar.get(Calendar.MONTH);
         System.out.println(temp);
-        if(temp<3){
-            et_from.setText(String.valueOf(year - 1));
-            et_to.setText(String.valueOf(year));}
-        else
-        {
-            et_from.setText(String.valueOf(year ));
-            et_to.setText(String.valueOf(year+1));
-        }
-        bt_to.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mode = 1;//to year
-                show(v.getId());
-            }
-        });
-        bt_from.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mode = 2;//from
-                // showDialog(DATE_PICKER_ID);
-                show(v.getId());
 
-            }
-        });
+        for(int i=2010; i<2025; i++){
+            years.add(String.valueOf(i));
+        }
+
+        ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,years);
+
+        spinner_from.setAdapter(arrayAdapter);
+        spinner_to.setAdapter(arrayAdapter);
 
         bt_submit.setOnClickListener(new View.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -196,7 +182,7 @@ public class Listpayment_out_index extends Fragment implements NumberPicker.OnVa
                     List<Integer> array = new ArrayList<Integer>();
                     List<String> date = new ArrayList<String>();
                     List<Integer> amount = new ArrayList<Integer>();
-                    Cursor res = mydb.distcname(et_from.getText().toString(), et_to.getText().toString());
+                    Cursor res = mydb.distcname(spinner_from.getSelectedItem().toString(), spinner_to.getSelectedItem().toString());
 
                     String jan = null;
                     String feb = null;
@@ -354,7 +340,7 @@ public class Listpayment_out_index extends Fragment implements NumberPicker.OnVa
                             System.out.println("error name"+e.toString());
                         }
 
-                        res1 = mydb.listpaymentout(x, et_from.getText().toString(), et_to.getText().toString());
+                        res1 = mydb.listpaymentout(x, spinner_from.getSelectedItem().toString(), spinner_to.getSelectedItem().toString());
 
                         System.out.println("out of the dbhelper");
                         if (res1.getCount() == 0) {
@@ -774,8 +760,8 @@ public class Listpayment_out_index extends Fragment implements NumberPicker.OnVa
                                         public void onClick(DialogInterface dialog, int which) {
                                             Intent i=new Intent(getActivity(),Detail_payout.class);
                                             i.putExtra("flatno",tv.getText().toString());
-                                            i.putExtra("from",et_from.getText().toString());
-                                            i.putExtra("to",et_to.getText().toString());
+                                            i.putExtra("from", spinner_from.getSelectedItem().toString());
+                                            i.putExtra("to", spinner_to.getSelectedItem().toString());
                                             startActivity(i);
                                         }
 
@@ -817,10 +803,10 @@ public class Listpayment_out_index extends Fragment implements NumberPicker.OnVa
             @Override
             public void onClick(View v) {
                 if (mode == 1) {
-                    et_to.setText(String.valueOf(np.getValue()));
+                    //spinner_to.setText(String.valueOf(np.getValue()));
                     d.dismiss();
                 } else if (mode == 2) {
-                    et_from.setText(String.valueOf(np.getValue()));
+                    ///spinner_from.setText(String.valueOf(np.getValue()));
                     d.dismiss();
                 } else {
                     Toast.makeText(getActivity(), "pls select year", Toast.LENGTH_LONG).show();

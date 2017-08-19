@@ -4,87 +4,26 @@
     android:layout_height="fill_parent">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="from"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:id="@+id/textView"
-       android:layout_toRightOf="@+id/textView3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="to"
-        android:id="@+id/textView2"
-        android:layout_toRightOf="@+id/btdatepick_listpout"
-        />
-
-    <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/et_from_lispout"
-        android:layout_alignBottom="@+id/et_from_lispout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:text="Year:"
-        android:textColor="#000" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_from_lispout"
-        android:inputType="phone"
-
-        android:layout_below="@+id/textView"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_to_listpout"
-        android:inputType="phone"
-        android:layout_below="@+id/textView2"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
-
-    <Button
-        android:id="@+id/btdatepick_listpout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_toRightOf="@+id/textView"
-        android:background="#eeffaa"
-        android:text="f" />
-
-    <Button
-        android:id="@+id/bt_to_listpout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/et_to_listpout"
-        android:layout_alignBottom="@+id/et_to_listpout"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_toEndOf="@+id/et_to_listpout"
-        android:layout_toRightOf="@+id/et_to_listpout"
-        android:background="#eeffaa"
-        android:text="t" />
+        android:textColor="#000"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/btsubmit_listpout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btdatepick_listpout"
-        android:layout_alignRight="@+id/btdatepick_listpout"
-        android:layout_below="@+id/bt_to_listpout"
-        android:layout_toStartOf="@+id/et_to_listpout"
         android:background="#eeffaa"
-        android:text="submit" />
+        android:text="submit"
+        android:layout_marginTop="53dp"
+        android:layout_below="@+id/spinner_to"
+        android:layout_toRightOf="@+id/spinner_from"
+        android:layout_toEndOf="@+id/spinner_from" />
 
     <HorizontalScrollView
         android:layout_width="fill_parent"
@@ -275,11 +214,51 @@
         style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/et_to_listpout"
-        android:layout_alignStart="@+id/et_to_listpout"
-        android:layout_below="@+id/bt_to_listpout"
         android:background="#eeffaa"
-        android:text="export" />
+        android:text="export"
+        android:layout_marginLeft="56dp"
+        android:layout_marginStart="56dp"
+        android:layout_above="@+id/hsv_listpout"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <Spinner
+        android:id="@+id/spinner_to"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/spinner_from"
+        android:layout_toRightOf="@+id/textView28"
+        android:layout_toEndOf="@+id/textView28"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp" />
+
+    <Spinner
+        android:id="@+id/spinner_from"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignLeft="@+id/btexp_listpayout"
+        android:layout_alignStart="@+id/btexp_listpayout" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From:"
+        android:layout_alignTop="@+id/spinner_from"
+        android:layout_toLeftOf="@+id/spinner_from"
+        android:layout_toStartOf="@+id/spinner_from" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To:"
+        android:layout_alignTop="@+id/spinner_from"
+        android:layout_toRightOf="@+id/spinner_from"
+        android:layout_toEndOf="@+id/spinner_from"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp" />
 
 
 </RelativeLayout>
