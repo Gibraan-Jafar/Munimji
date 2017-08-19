@@ -7,9 +7,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -20,6 +23,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -32,6 +37,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.List;
 
 /**
  * Created by Jauhar xlr on 4/18/2016.
@@ -62,6 +68,20 @@ public class MainActivity extends AppCompatActivity implements Dialogfragment_mo
         myFragmentManager = getSupportFragmentManager();
         myFragmentTransaction = myFragmentManager.beginTransaction();
         myFragmentTransaction.replace(R.id.containerView, new HomeFragment(), "home").commit();
+
+        if(Build.VERSION.SDK_INT >= 21){
+
+        Window window = getWindow();
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this ,R.color.orange));}
+
         /**
          * Setup click events on the Navigation View Items.
          */
@@ -114,6 +134,20 @@ public class MainActivity extends AppCompatActivity implements Dialogfragment_mo
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if(id == R.id.action_save){
+
+            List<Fragment> fragments = myFragmentManager.getFragments();
+
+            if(fragments != null){
+
+                for(Fragment fragment: fragments){
+
+                    if(fragment != null && fragment.isVisible()){
+                        Toast.makeText(getApplicationContext(), fragment.toString() , Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }
         if (id == R.id.action_settings) {
             Toast.makeText(getApplicationContext(), "settings", Toast.LENGTH_SHORT).show();
             Intent j = new Intent(this, Settings.class);
