@@ -13,6 +13,9 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -37,16 +40,28 @@ public class showPhone extends Fragment {
     TextView companyTV,valueTV, mobileNumber;
     Button searchPhone;
     EditText phoneNumber;
+    MenuItem menuItem;
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         System.out.println("Hello1");
         View rootView = inflater.inflate(R.layout.mobile_numbers,null);
         System.out.println("Hello2");
+        setHasOptionsMenu(true);
         return rootView;
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menuItem = (MenuItem) menu.findItem(R.id.action_save);
+        menuItem.setVisible(false);
+    }
+
+
+
+    @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+
 
 //        @Override
 //    public void onCreate(Bundle savedInstanceState) {

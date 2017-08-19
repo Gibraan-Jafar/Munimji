@@ -60,16 +60,26 @@ public class HomeFragment extends Fragment {
         {
             System.out.println("hello:"+position);
             switch (position){
-                case 0 : return new Addnewowner_index();
-                case 1 : return new Paymentin();
-                case 2 : return new Paymentout();
-                case 3: return new Listpaymentin_index();
-                case 4:return new Listpayment_out_index();
-                case 5:return new Tenantinfo();
-                case 6:return new Companyinfo();
-                case 7:return new Help();
-                case 8: return new showPhone();
-                case 9: return new showVehicle();
+                case 0 :
+                    return new Addnewowner_index();
+                case 1 :
+                    return new Paymentin();
+                case 2 :
+                    return new Paymentout();
+                case 3:
+                    return new Listpaymentin_index();
+                case 4:
+                    return new Listpayment_out_index();
+                case 5:
+                    return new Tenantinfo();
+                case 6:
+                    return new Companyinfo();
+                case 7:
+                    return new Help();
+                case 8:
+                    return new showPhone();
+                case 9:
+                    return new showVehicle();
             }
             return null;
         }
@@ -94,7 +104,7 @@ public class HomeFragment extends Fragment {
                 case 4:
                     return "List Debits";
                 case 5:
-                    return "Teanant Info";
+                    return "Tenant Info";
                 case 6:
                     return "Company info";
                 case 7:

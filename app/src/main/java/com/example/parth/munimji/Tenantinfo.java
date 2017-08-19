@@ -9,6 +9,9 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -20,6 +23,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.Calendar;
+
+
 
 /**
  * Created by parth on 7/7/16.
@@ -35,6 +40,8 @@ public class Tenantinfo extends Fragment {
     String flatno,mobile,email,vechnum;
     LinearLayout hzll, vertll;
 
+    MenuItem menuItem;
+
     int id,tid;
     String joindate,leftdate;
 
@@ -43,12 +50,23 @@ public class Tenantinfo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tenant_info,null);
-
+        setHasOptionsMenu(true);
         return rootView;
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menuItem = (MenuItem) menu.findItem(R.id.action_save);
+        menuItem.setVisible(true);
+    }
+
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+
+
         myDb=new DataBaseHelper(getActivity());
         super.onViewCreated(view, savedInstanceState);
         bt_add_vechno = (Button) view.findViewById(R.id.bt_addvech_newtenant);

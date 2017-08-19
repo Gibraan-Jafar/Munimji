@@ -21,6 +21,9 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -75,12 +78,21 @@ public class Listpaymentin_index extends Fragment implements NumberPicker.OnValu
     final int tamountexpectednoT = 12 * 1000;
     TableLayout tbl;
     TableRow tbrow1;
+    MenuItem menuItem;
     static int mode = 0;//1 for to//2 for from
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.listpaymentin,null);
+        setHasOptionsMenu(true);
         return rootView;    
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menuItem = (MenuItem) menu.findItem(R.id.action_save);
+        menuItem.setVisible(false);
     }
 
     @Override

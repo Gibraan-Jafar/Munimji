@@ -33,6 +33,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,11 +84,20 @@ public class Addnewowner_index extends Fragment {
     View rootView;
     TableLayout tb;
     ScrollView infoScroll;
+    MenuItem menuItem;
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menuItem = (MenuItem) menu.findItem(R.id.action_save);
+        menuItem.setVisible(true);
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.addnewowner, container, false);
+        setHasOptionsMenu(true);
         return rootView;
     }
 
@@ -114,6 +124,8 @@ public class Addnewowner_index extends Fragment {
         tbown = (TableLayout) view.findViewById(R.id.index_own);
         tbown.setClickable(true);
         tvname = (TextView) view.findViewById(R.id.tvName_own);
+
+
 
         //mycode
 
@@ -416,6 +428,27 @@ public class Addnewowner_index extends Fragment {
             }
         });
         myDb.close();
+    }
+
+    public void saveInfo(){
+
+        Cursor res = myDb.tnown_join_tbtenant();
+        if (res.getCount() == 0) {
+            //no data
+            showMessage("error", "nothing found");
+
+        }
+        StringBuffer buffer = new StringBuffer();
+        while (res.moveToNext()) {
+            buffer.append("id:" + res.getInt(res.getColumnIndex("id")));
+            buffer.append("tid:" + res.getInt(res.getColumnIndex("tid")));
+            buffer.append("flatno:" + res.getString(res.getColumnIndex("flatno")) + "\n");
+
+            // buffer.append("Flatno:" + res.getString(res.getColumnIndex("flatno"))+"\n");
+            //buffer.append("name:" + res.getString(res.getColumnIndex("name")) + "\n");
+        }
+        showMessage("Data:\n", buffer.toString());
+
     }
 
     public void showMessage(String title, String message) {

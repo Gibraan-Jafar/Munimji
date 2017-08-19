@@ -19,6 +19,9 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -39,6 +42,7 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
+
 /**
  * Created by parth on 1/7/16.
  */
@@ -54,18 +58,29 @@ public class Listpayment_out_index extends Fragment implements NumberPicker.OnVa
     TableLayout tbl, tblnew;
     TableRow tbrow1, tbr2;
     ArrayList<String> years = new ArrayList<>();
+    MenuItem menuItem;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.listpaymentout,null);
+        setHasOptionsMenu(true);
         return rootView;
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menuItem = (MenuItem) menu.findItem(R.id.action_save);
+        menuItem.setVisible(false);
+    }
+
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //mycode
         mydb = new DataBaseHelper(getActivity());
+
 
 
         exp=(Button)view.findViewById(R.id.btexp_listpayout);

@@ -17,6 +17,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -44,6 +47,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
 
 /**
  * Created by parth on 11/5/16.
@@ -85,7 +89,7 @@ public class Paymentin extends  Fragment{
 
     List<String> categories = new ArrayList<String>();
 
-
+    MenuItem menuItem;
 
     @Nullable
 @Override
@@ -120,9 +124,24 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menuItem = menu.getItem(0);
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+//            menuItem.setVisible(true);
+        }
+        else {
+        }
+    }
+
+    @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
 
 

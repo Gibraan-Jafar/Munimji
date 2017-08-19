@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -31,6 +34,7 @@ public class Paymentout extends Fragment{
     RelativeLayout rlcheque,rlonline;
     int day1,year1,month1;
     boolean error;
+    MenuItem menuItem;
 
     AutoCompleteTextView et_cname;
     EditText et_amount,et_date,et_cheque,et_branch,et_online,checkdated;
@@ -43,8 +47,25 @@ public class Paymentout extends Fragment{
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menuItem = menu.getItem(0);
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+//            menuItem.setVisible(true);
+        }
+        else {
+        }
+    }
+
+    @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         et_amount=(EditText)view.findViewById(R.id.et_amount_pout);
 
         et_date=(EditText)view.findViewById(R.id.et_date_pout);

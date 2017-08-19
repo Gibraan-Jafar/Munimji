@@ -16,6 +16,9 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,6 +28,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TableRow.LayoutParams;
 import android.widget.Toast;
+
 
 public class showVehicle extends Fragment {
 
@@ -40,13 +44,23 @@ public class showVehicle extends Fragment {
     TextView companyTV,valueTV, mobileNumber;
     Button searchVehicleNumber;
     EditText vehicleNumber;
+    MenuItem menuItem;
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //System.out.println("Hello1");
         View rootView = inflater.inflate(R.layout.mobile_numbers,null);
+        setHasOptionsMenu(true);
         //System.out.println("Hello2");
         return rootView;
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menuItem = (MenuItem) menu.findItem(R.id.action_save);
+        menuItem.setVisible(false);
+    }
+
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
