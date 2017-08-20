@@ -18,12 +18,13 @@
         android:id="@+id/btsubmit_listpout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#eeffaa"
-        android:text="submit"
-        android:layout_marginTop="53dp"
         android:layout_below="@+id/spinner_to"
+        android:layout_marginTop="53dp"
+        android:layout_toEndOf="@+id/spinner_from"
         android:layout_toRightOf="@+id/spinner_from"
-        android:layout_toEndOf="@+id/spinner_from" />
+        android:background="@color/orange"
+        android:text="Submit "
+        android:textColor="#fff" />
 
     <HorizontalScrollView
         android:layout_width="fill_parent"
@@ -214,13 +215,14 @@
         style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#eeffaa"
-        android:text="export"
+        android:layout_above="@+id/hsv_listpout"
         android:layout_marginLeft="56dp"
         android:layout_marginStart="56dp"
-        android:layout_above="@+id/hsv_listpout"
+        android:layout_toEndOf="@+id/textView3"
         android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3" />
+        android:background="@color/orange"
+        android:text="Export "
+        android:textColor="#fff" />
 
     <Spinner
         android:id="@+id/spinner_to"

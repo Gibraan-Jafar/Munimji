@@ -190,12 +190,13 @@
             android:id="@+id/bt_show_teant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#eeffaa"
-            android:text="show"
-            android:layout_below="@+id/ly_add_numvech_tenant"
-            android:layout_alignRight="@+id/et_email_tenant"
             android:layout_alignEnd="@+id/et_email_tenant"
-            android:layout_marginTop="13dp" />
+            android:layout_alignRight="@+id/et_email_tenant"
+            android:layout_below="@+id/ly_add_numvech_tenant"
+            android:layout_marginTop="13dp"
+            android:background="@color/orange"
+            android:text="show"
+            android:textColor="#fff" />
 
         <Button
             android:id="@+id/bt_addvech_newtenant"

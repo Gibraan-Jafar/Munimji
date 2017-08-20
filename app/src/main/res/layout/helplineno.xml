@@ -59,10 +59,11 @@
         android:id="@+id/bt_add_help"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#eeffaa"
-        android:text="ADD"
         android:layout_below="@+id/et_email_help"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@color/orange"
+        android:text="ADD"
+        android:textColor="#fff" />
     <ScrollView
         android:layout_below="@+id/bt_add_help"
         android:layout_marginTop="20dp"

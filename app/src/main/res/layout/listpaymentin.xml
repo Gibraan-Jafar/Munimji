@@ -19,11 +19,12 @@
         android:id="@+id/btsubmit_listpin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#eeffaa"
-        android:text="submit"
-        android:layout_marginTop="65dp"
         android:layout_below="@+id/textView31"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:background="@color/orange"
+        android:text="submit"
+        android:textColor="#fff" />
 
     <HorizontalScrollView
 
@@ -275,8 +276,9 @@
         android:layout_marginStart="15dp"
         android:layout_toEndOf="@+id/btsubmit_listpin"
         android:layout_toRightOf="@+id/btsubmit_listpin"
-        android:background="#eeffaa"
-        android:text="export" />
+        android:background="@color/orange"
+        android:text="Export "
+        android:textColor="#fff" />
 
     <Spinner
         android:id="@+id/spinner_from_lispin"

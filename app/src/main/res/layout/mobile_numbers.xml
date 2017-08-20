@@ -21,8 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@id/et_searchVehicle"
-            android:background="#eeffaa"
-            android:text="search" />
+            android:background="@color/orange"
+            android:text="search"
+            android:textColor="#fff" />
     </RelativeLayout>
     <ScrollView
         android:layout_width="wrap_content"

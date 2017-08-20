@@ -86,12 +86,14 @@
         android:id="@+id/btlistpout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="#eeffaa"
-        android:text="List"
         android:layout_below="@+id/et_date_pout"
+        android:layout_marginTop="24dp"
         android:layout_toLeftOf="@+id/bt_date_pout"
-        android:layout_toStartOf="@+id/bt_date_pout" />
+        android:layout_toStartOf="@+id/bt_date_pout"
+        android:background="@color/orange"
+        android:contextClickable="false"
+        android:text="List"
+        android:textColor="#fff" />
 
     <TextView
         android:id="@+id/textView17"

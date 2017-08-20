@@ -136,7 +136,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_name_detpayin"
         android:layout_centerHorizontal="true"
-        android:background="#eeffaa"
-        android:text="export" />
+        android:background="@color/orange"
+        android:text="export"
+        android:textColor="#fff" />
 
 </RelativeLayout>
