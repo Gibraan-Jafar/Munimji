@@ -182,6 +182,8 @@ public class MainActivity extends AppCompatActivity implements Dialogfragment_mo
             }
             else if(openFragment.matches("Company Info")){
                 Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+                Companyinfo fragment = (Companyinfo) HomeFragment.myAdapter.getCurrentFragment();
+                fragment.saveInfo();
             }
             else if(openFragment.matches("Helplines")){
                 Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();

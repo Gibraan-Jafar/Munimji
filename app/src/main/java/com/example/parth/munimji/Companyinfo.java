@@ -100,6 +100,25 @@ public class Companyinfo extends Fragment {
             }
         });
     }
+
+    public void saveInfo(){
+
+        name=etname.getText().toString();
+        companyname=etcname.getText().toString();
+        number=etmobile.getText().toString();
+        desc=etdesc.getText().toString();
+        boolean ans= myDb.insertcompanyinfo(companyname,name,number,desc);
+        if(ans==true)
+        {
+            etname.setText("");
+            etcname.setText("");
+            etmobile.setText("");
+            etdesc.setText("");
+        }
+        Toast.makeText(getActivity(),""+ans,Toast.LENGTH_SHORT).show();
+
+    }
+
     public void showMessage(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setCancelable(true);
