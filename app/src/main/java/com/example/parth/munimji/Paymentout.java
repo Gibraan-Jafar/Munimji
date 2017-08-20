@@ -38,7 +38,8 @@ public class Paymentout extends Fragment{
 
     AutoCompleteTextView et_cname;
     EditText et_amount,et_date,et_cheque,et_branch,et_online,checkdated;
-    Button bt_submit,bt_date,bt_list,bt_cash,bt_cheque,bt_online,bt_checkdated;
+    Button bt_date,bt_list,bt_cash,bt_cheque,bt_online,bt_checkdated;
+    //Button bt_submit;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,7 +73,7 @@ public class Paymentout extends Fragment{
         myDb=new DataBaseHelper(getActivity());
         bt_date=(Button)view.findViewById(R.id.bt_date_pout);
         bt_list=(Button)view.findViewById(R.id.btlistpout);
-        bt_submit=(Button)view.findViewById(R.id.btsubmitpout);
+        //bt_submit=(Button)view.findViewById(R.id.btsubmitpout);
 
 
 
@@ -222,7 +223,7 @@ public class Paymentout extends Fragment{
 
 
 
-        bt_submit.setOnClickListener(new View.OnClickListener() {
+        /*bt_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String checkdate="";
@@ -295,7 +296,7 @@ public class Paymentout extends Fragment{
                 }
                 catch(Exception e){Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_LONG).show();}
             }
-        });
+        });*/
 
         bt_list.setOnClickListener(new View.OnClickListener() {
             @Override

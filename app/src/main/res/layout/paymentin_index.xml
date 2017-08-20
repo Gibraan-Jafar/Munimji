@@ -297,15 +297,6 @@
         android:layout_toRightOf="@+id/etdatepicker_pin"
         android:layout_marginTop="110dp"
         android:layout_marginLeft="5dp" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:id="@+id/btsubmit_pin"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/textView30"
-        android:layout_marginLeft="40dp"
-        />
     </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

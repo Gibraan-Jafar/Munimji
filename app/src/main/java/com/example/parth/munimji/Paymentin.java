@@ -65,7 +65,8 @@ public class Paymentin extends  Fragment{
     EditText etamount,etcheckno, etbranck,etransid,datepick,etcheckdate,etOnlineDate,etEntryDate;
     RelativeLayout rlcheque, rlonline;
     AutoCompleteTextView etmid;
-    Button btsubmit,btlist, btcheque,btcash,btonline,btdatepic,btcheckdate, btonlineDate;
+    Button btlist, btcheque,btcash,btonline,btdatepic,btcheckdate, btonlineDate;
+    //Button btsubmit;
     TextView tvPersonName;
     boolean error;
     String mid=null;
@@ -206,7 +207,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
         btonlineDate=(Button)view.findViewById(R.id.bt_online_date);
         btcheckdate=(Button)view.findViewById(R.id.bt_check_date_pin);
         //button for listing and submitting
-        btsubmit=(Button)view.findViewById(R.id.btsubmit_pin);
+        //btsubmit=(Button)view.findViewById(R.id.btsubmit_pin);
         //btlist=(Button)view.findViewById(R.id.bt_List_pin);
         //buttons for mode selection
         btcheque=(Button)view.findViewById(R.id.bt_cheque_pin);
@@ -448,7 +449,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
         });
         /// add date in the data base
 */
-        btsubmit.setOnClickListener(new View.OnClickListener() {
+        /*btsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try{
@@ -676,7 +677,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
                 }
                 catch(Exception e){Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_LONG).show();}
             }
-        });
+        }); */
         myDb.close();
     }
 
