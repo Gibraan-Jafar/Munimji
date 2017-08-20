@@ -21,7 +21,7 @@ import android.widget.Toast;
 public class Companyinfo extends Fragment {
     EditText etcname,etname,etmobile,etdesc;
     String name,number,companyname,desc;
-    Button btsubmit;
+    //Button btsubmit;
     MenuItem menuItem;
 
     DataBaseHelper myDb;
@@ -37,7 +37,7 @@ public class Companyinfo extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menuItem = (MenuItem) menu.findItem(R.id.action_save);
-        menuItem.setVisible(false);
+        menuItem.setVisible(true);
     }
 
     @Override
@@ -49,9 +49,9 @@ public class Companyinfo extends Fragment {
         etname=(EditText)view.findViewById(R.id.et_contactperson_cinfo);
         etmobile=(EditText)view.findViewById(R.id.et_contactphone_cinfo);
         etdesc=(EditText)view.findViewById(R.id.et_desc_cinfo);
-        btsubmit=(Button)view.findViewById(R.id.btsubmint_cinfo);
+        //btsubmit=(Button)view.findViewById(R.id.btsubmint_cinfo);
 
-        btsubmit.setOnClickListener(new View.OnClickListener() {
+        /*btsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 name=etname.getText().toString();
@@ -68,7 +68,8 @@ public class Companyinfo extends Fragment {
                 }
                 Toast.makeText(getActivity(),""+ans,Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
+
         Button bt=(Button)view.findViewById(R.id.btshow_cinfo);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override

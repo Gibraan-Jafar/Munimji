@@ -31,7 +31,7 @@ import java.util.Calendar;
  */
 public class Tenantinfo extends Fragment {
     int pos = 0;
-    Button btdatejoin,btdateleft,btsubmit,bt_add_vechno;
+    Button btdatejoin,btdateleft,bt_add_vechno;
     EditText etname,etleftdate,etjoindate,etmobile,etemail,etvechnum;
     AutoCompleteTextView etflatno;
     int year,month,day;//for date picker
@@ -39,6 +39,7 @@ public class Tenantinfo extends Fragment {
     String name;
     String flatno,mobile,email,vechnum;
     LinearLayout hzll, vertll;
+    //Button btsubmit;
 
     MenuItem menuItem;
 
@@ -80,7 +81,7 @@ public class Tenantinfo extends Fragment {
         etleftdate=(EditText)view.findViewById(R.id.et_leftdate_tenant);
         btdatejoin=(Button)view.findViewById(R.id.bt_joindate_tenant);
         btdateleft=(Button)view.findViewById(R.id.bt_leftdate_tenant);
-        btsubmit=(Button)view.findViewById(R.id.bt_submit_tenant);
+        //btsubmit=(Button)view.findViewById(R.id.bt_submit_tenant);
 
 
         vertll=(LinearLayout)view.findViewById(R.id.ly_add_numvech_tenant);
@@ -181,7 +182,7 @@ public class Tenantinfo extends Fragment {
 
             }
         });
-        btsubmit.setOnClickListener(new View.OnClickListener() {
+       /* btsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -230,7 +231,7 @@ public class Tenantinfo extends Fragment {
                     System.out.println(e.toString()+123);
                 }
             }
-        });
+        });*/
         Button bt=(Button)view.findViewById(R.id.bt_show_teant);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override

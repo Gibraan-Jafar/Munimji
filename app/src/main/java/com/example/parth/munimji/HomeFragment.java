@@ -124,7 +124,7 @@ public class HomeFragment extends Fragment {
                 case 5:
                     return "Tenant Info";
                 case 6:
-                    return "Company info";
+                    return "Company Info";
                 case 7:
                     return "Helplines";
                 case 8:

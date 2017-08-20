@@ -156,7 +156,7 @@
             android:layout_height="wrap_content"
             android:text="Vehicle Number:"
             android:textColor="#000"
-            android:layout_above="@+id/bt_submit_tenant"
+            android:layout_alignBottom="@+id/ly_add_numvech_tenant"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
     <LinearLayout
@@ -187,24 +187,15 @@
     </LinearLayout>
 
         <Button
-            android:id="@+id/bt_submit_tenant"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ly_add_numvech_tenant"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/tv40"
-            android:background="#eeffaa"
-            android:text="Submit" />
-
-        <Button
             android:id="@+id/bt_show_teant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#eeffaa"
             android:text="show"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/ly_add_numvech_tenant"
             android:layout_alignRight="@+id/et_email_tenant"
-            android:layout_alignEnd="@+id/et_email_tenant" />
+            android:layout_alignEnd="@+id/et_email_tenant"
+            android:layout_marginTop="13dp" />
 
         <Button
             android:id="@+id/bt_addvech_newtenant"
