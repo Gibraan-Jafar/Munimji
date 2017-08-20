@@ -166,6 +166,8 @@ public class MainActivity extends AppCompatActivity implements Dialogfragment_mo
             }
             else if(openFragment.matches("Debits")){
                 Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+                Paymentout fragment = (Paymentout) HomeFragment.myAdapter.getCurrentFragment();
+                fragment.saveInfo();
             }
             else if(openFragment.matches("List Credits")){
                 Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
@@ -175,6 +177,8 @@ public class MainActivity extends AppCompatActivity implements Dialogfragment_mo
             }
             else if(openFragment.matches("Tenant Info")){
                 Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+                Tenantinfo fragment = (Tenantinfo) HomeFragment.myAdapter.getCurrentFragment();
+                fragment.saveInfo();
             }
             else if(openFragment.matches("Company Info")){
                 Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();

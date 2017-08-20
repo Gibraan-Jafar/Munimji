@@ -256,6 +256,55 @@ public class Tenantinfo extends Fragment {
         });
         myDb.close();
     }
+
+    public void saveInfo(){
+        try {
+            name = etname.getText().toString().trim();
+            flatno = etflatno.getText().toString().trim();
+            email=etemail.getText().toString().trim();
+            mobile=etmobile.getText().toString().trim();
+            vechnum=etvechnum.getText().toString().trim();
+            Cursor cursor = myDb.tb_owner_getid(flatno);
+            if (cursor.moveToNext())
+                id = cursor.getInt(cursor.getColumnIndex("id"));
+
+
+
+            String a, b;
+            a = String.format("%02d", month);
+            b = String.format("%02d", day);
+
+            String a1, b1;
+            a1 = String.format("%02d", month1);
+            b1 = String.format("%02d", day1);
+
+            joindate = year + "-" + a + "-" + b;
+            leftdate = year1 + "-" + a1 + "-" + b1;
+
+            boolean ans1=false,ans2=false,ans3=false,ans = myDb.tb_tenant_ins(id, name, joindate, leftdate);
+            Cursor cursor1=myDb.tb_tenant_getid(id);
+            if (cursor1.moveToNext())
+                tid = cursor1.getInt(cursor1.getColumnIndex("tid"));
+            if(ans==true)
+            {
+                etflatno.setText("");
+                etname.setText("");
+                etmobile.setText("");
+                etvechnum.setText("");
+                etemail.setText("");
+
+                ans1 = myDb.tb_persinfo_ins(id, 1, mobile);
+                ans2 = myDb.tb_persinfo_ins(id, 2, email);
+                ans3 = myDb.tb_persinfo_ins(id, 3, vechnum);
+
+            }
+            Toast.makeText(getContext(),""+ans1+"*"+ans2+"*"+ans3,Toast.LENGTH_SHORT).show();
+        }catch (Exception e)
+        {
+            System.out.println(e.toString()+123);
+        }
+    }
+
     public void showMessage(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setCancelable(true);

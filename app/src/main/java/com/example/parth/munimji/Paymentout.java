@@ -310,4 +310,76 @@ public class Paymentout extends Fragment{
         });
         myDb.close();
     }
+
+    public void saveInfo(){
+        String checkdate="";
+
+        months=String.format("%02d",month);
+        days=String.format("%02d",day);
+        branch=null;
+        //Toast.makeText(getApplicationContext(), "submitbutton pressed", Toast.LENGTH_LONG).show();
+
+        try{
+
+            if(mode==1)
+            {
+                checkno=et_cheque.getText().toString().trim();
+                checknoi=Integer.parseInt(checkno);
+                branch=et_branch.getText().toString();
+                months1=String.format("%02d",month);
+                days1=String.format("%02d",day);
+                checkdate=year1+"-"+months1+"-"+days1;
+            }
+            else if(mode==2)
+            {
+                transid=et_online.getText().toString().trim();
+                checknoi=Integer.parseInt(transid);
+                branch=null;
+            }
+            else {
+                branch=null;
+                checknoi=0;
+            }
+            cname=et_cname.getText().toString().trim();
+            amount=et_amount.getText().toString().trim();
+            amounti=Integer.parseInt(amount);
+            //Toast.makeText(getApplicationContext(),amount+cname, Toast.LENGTH_LONG).show();
+
+        }catch (Exception e)
+        {   error=true;
+            Toast.makeText(getActivity(), "name or money not entered**"+e.toString(), Toast.LENGTH_LONG).show();
+        }
+        try {
+            Toast.makeText(getActivity(),"rrr"+"*"+cname+"*"+amounti+"*"+day+"*"+month+"*"+year+"*"+checknoi+"*"+branch,Toast.LENGTH_LONG).show();
+            String date=year+"-"+months+"-"+days;
+            //String cname,int amount,String date,String mode,int checkno,String branch
+
+            if(error==true)
+            {
+                Toast.makeText(getActivity(),"sss"+false,Toast.LENGTH_LONG).show();
+            }
+            else {int id=0;
+                Cursor res2=myDb.tb_owner_getcompanyid(String.valueOf(cname));
+                //System.out.println(ans);
+                System.out.println(res2.getColumnName(0));
+                if(res2.moveToNext())
+                    id =res2.getInt(res2.getColumnIndex("companyid"));
+
+
+                boolean flag=myDb.insertData(id, amounti,date,tmode,checknoi,branch,checkdate);
+                Toast.makeText(getActivity(),"sss"+flag,Toast.LENGTH_LONG).show();
+            }
+            et_amount.setText("");
+            if(mode==1) {
+                et_cheque.setText("");
+                et_branch.setText("");
+            }
+            if(mode==2)
+                et_online.setText("");
+
+            et_cname.setText("");
+
+        }
+        catch(Exception e){Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_LONG).show();}
+    }
 }
