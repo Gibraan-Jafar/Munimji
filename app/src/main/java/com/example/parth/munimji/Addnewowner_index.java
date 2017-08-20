@@ -69,7 +69,8 @@ public class Addnewowner_index extends Fragment {
     int mobilei, rowno;
     String mobile = "", flatno1 = "", name = "", tenant = "", email = "", vehicleInfo2 = "", vehicleInfo4="";
     TableLayout tbown;
-    Button bname, binfo, exp, bt_add_vechno, bt_add_2wheeler;
+    //Button bname, binfo, exp, bt_add_vechno, bt_add_2wheeler;
+    Button bt_add_vechno, bt_add_2wheeler;
     String dflatno, dmobile;
     int numvech;
     int choice;
@@ -109,11 +110,11 @@ public class Addnewowner_index extends Fragment {
         bt_add_vechno = (Button) view.findViewById(R.id.bt_addvech_newown);
         bt_add_2wheeler= (Button) view.findViewById(R.id.bt_addvech2_newown);
         infoScroll= (ScrollView) view.findViewById(R.id.scrollView1);
-        exp = (Button) view.findViewById(R.id.bt_exp_own);
+        //exp = (Button) view.findViewById(R.id.bt_exp_own);
         tb = (TableLayout) view.findViewById(R.id.index_own);
         //rgtenant = (RadioGroup) view.findViewById(R.id.rGtenant_own);
-        bname = (Button) view.findViewById(R.id.bt_insert);
-        binfo = (Button) view.findViewById(R.id.btinfo);
+        //bname = (Button) view.findViewById(R.id.bt_insert);
+        //binfo = (Button) view.findViewById(R.id.btinfo);
         etname = (EditText) view.findViewById(R.id.etname);
         flatno = (EditText) view.findViewById(R.id.et_flatno);
         etmobile = (EditText) view.findViewById(R.id.etmobile_own);
@@ -230,7 +231,7 @@ public class Addnewowner_index extends Fragment {
 
 
 
-        exp.setOnClickListener(new View.OnClickListener() {
+        /*exp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -280,7 +281,7 @@ public class Addnewowner_index extends Fragment {
 
                 }
             }
-        });
+        });*/
 
 
         myDb = new DataBaseHelper(getActivity());
@@ -293,14 +294,14 @@ public class Addnewowner_index extends Fragment {
         disp(); ///for displaying elements
 
 
-        bname.setOnClickListener(new View.OnClickListener() {
+        /*bname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     int selectionid;
-                    /*Toast.makeText(getActivity()
-                            , etemail.getText().toString() + etnumvech.getText().toString() + etvechnum.getText()
-                                    .toString(), Toast.LENGTH_SHORT).show();*/
+                    //Toast.makeText(getActivity()
+                       //     , etemail.getText().toString() + etnumvech.getText().toString() + etvechnum.getText()
+                     //              .toString(), Toast.LENGTH_SHORT).show();
                     //selectionid = rgtenant.getCheckedRadioButtonId();
                     //rbtenant = (RadioButton) view.findViewById(selectionid);
                     //System.out.println("above tenant");
@@ -427,6 +428,7 @@ public class Addnewowner_index extends Fragment {
                 showMessage("Data:\n", buffer.toString());
             }
         });
+        */
         myDb.close();
     }
 
