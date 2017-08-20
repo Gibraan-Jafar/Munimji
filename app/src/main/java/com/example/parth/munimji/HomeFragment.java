@@ -21,6 +21,7 @@ public class HomeFragment extends Fragment {
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
     public static int int_items = 10;
+    public static MyAdapter myAdapter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,7 +35,9 @@ public class HomeFragment extends Fragment {
         /**
          *Set an Apater for the View Pager
          */
-        viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
+        myAdapter = new MyAdapter(getChildFragmentManager());
+
+        viewPager.setAdapter(myAdapter);
         /**
          * Now , this is a workaround ,
          * The setupWithViewPager dose't works without the runnable .
@@ -48,13 +51,27 @@ public class HomeFragment extends Fragment {
         });
         return x;
     }
-    class MyAdapter extends FragmentPagerAdapter{
+    public class MyAdapter extends FragmentPagerAdapter{
         public MyAdapter(FragmentManager fm) {
             super(fm);
         }
         /**
          * Return fragment with respect to Position .
          */
+        private Fragment mCurrentFragment;
+
+        public Fragment getCurrentFragment() {
+            return mCurrentFragment;
+        }
+        //...
+        @Override
+        public void setPrimaryItem(ViewGroup container, int position, Object object) {
+            if (getCurrentFragment() != object) {
+                mCurrentFragment = ((Fragment) object);
+            }
+            super.setPrimaryItem(container, position, object);
+        }
+
         @Override
         public Fragment getItem(int position)
         {
@@ -90,6 +107,7 @@ public class HomeFragment extends Fragment {
         /**
          * This method returns the title of the tab according to the position.
          */
+
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position){
@@ -116,5 +134,7 @@ public class HomeFragment extends Fragment {
             }
             return null;
         }
+
+
     }
 }

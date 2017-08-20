@@ -432,22 +432,112 @@ public class Addnewowner_index extends Fragment {
 
     public void saveInfo(){
 
-        Cursor res = myDb.tnown_join_tbtenant();
-        if (res.getCount() == 0) {
-            //no data
-            showMessage("error", "nothing found");
-
+        try {
+            int selectionid;
+                    /*Toast.makeText(getActivity()
+                            , etemail.getText().toString() + etnumvech.getText().toString() + etvechnum.getText()
+                                    .toString(), Toast.LENGTH_SHORT).show();*/
+            //selectionid = rgtenant.getCheckedRadioButtonId();
+            //rbtenant = (RadioButton) view.findViewById(selectionid);
+            //System.out.println("above tenant");
+            //tenant = rbtenant.getText().toString();
+            //System.out.println("below tenant" + tenant);
+            mobile = etmobile.getText().toString().trim();
+            System.out.println("Mobile Number::"+mobile);
+            name = etname.getText().toString().trim();
+            flatno1 = flatno.getText().toString().trim();
+            email = etemail.getText().toString();
+            vehicleInfo2 = et2vech.getText().toString();
+            vehicleInfo4 = et4vech.getText().toString();
+            //System.out.println(fourWheeler[0].getText());
+            //numvech = Integer.parseInt(etnumvech.getText().toString().trim());
+            //System.out.println(pos);
+            email = etemail.getText().toString();
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), e.toString() + "1", Toast.LENGTH_LONG).show();
+            System.out.println(e.toString() + "1");
         }
-        StringBuffer buffer = new StringBuffer();
-        while (res.moveToNext()) {
-            buffer.append("id:" + res.getInt(res.getColumnIndex("id")));
-            buffer.append("tid:" + res.getInt(res.getColumnIndex("tid")));
-            buffer.append("flatno:" + res.getString(res.getColumnIndex("flatno")) + "\n");
+        try {
+//                    if (flatno1.equals("") | mobile.equals("") | name.equals("") | email.equals("")) {
+            if (flatno1.equals("") | name.equals("")) {
+                error = true;
+            }
+            boolean ans;
+            if (error == true) {
 
-            // buffer.append("Flatno:" + res.getString(res.getColumnIndex("flatno"))+"\n");
-            //buffer.append("name:" + res.getString(res.getColumnIndex("name")) + "\n");
+                ans = false;
+            } else {//mobile, tenant,email,numvech,vechno
+                int id = 0;
+                if (cbOccupancy.isChecked() )
+                    ans = myDb.tb_owner_ins(flatno1, name,"O");
+                else
+                    ans = myDb.tb_owner_ins(flatno1, name,"T");
+                //System.out.println(flatno1);
+                Cursor res2 = myDb.tb_owner_getid(String.valueOf(flatno1));
+                System.out.println(ans);
+
+                if (res2.moveToNext())
+                    id = res2.getInt(res2.getColumnIndex("id"));
+                System.out.println("Flat id:"+id);
+                boolean ans1=false,ans2=false,ans3=false,ans4=false;
+                if(ans==true)
+                {
+                    if (mobile.length()>0)  ans1 = myDb.tb_persinfo_ins(id, 1, mobile);        //1-mobile
+                    if (email.length()>0) ans2 = myDb.tb_persinfo_ins(id, 2, email);         //2-email
+                    if (vehicleInfo2.length()>0)
+                    {
+                        ans3 = myDb.tb_persinfo_ins(id, 3, vehicleInfo2);        //3-2 wheeler info.
+                        if (twoWheelerCount>0) {
+                            System.out.println("Two wheller count "+twoWheelerCount);
+                            for (int i = 0; i < twoWheelerCount; i++) {
+                                System.out.println(twoWheeler[i].getText().toString());
+                                ans3 = myDb.tb_persinfo_ins(id, 3, twoWheeler[i].getText().toString());
+                            }
+                        }
+                    }
+                    if (vehicleInfo4.length()>0)
+                    {
+                        ans4 = myDb.tb_persinfo_ins(id, 4, vehicleInfo4);   //4-4 wheeler info.
+                        if (fourWheelerCount>0) {
+                            System.out.println("Four wheller count "+fourWheelerCount);
+                            for (int i = 0; i < fourWheelerCount; i++) {
+                                System.out.println(fourWheeler[i].getText().toString());
+                                ans3 = myDb.tb_persinfo_ins(id, 4, fourWheeler[i].getText().toString());
+                            }
+                        }
+                    }
+                }
+                System.out.println("*" + ans1 + "*" + ans2 + "*" + ans3+ "*" + ans4);
+                //boolean ans1=myDb.tb_persinfo_ins()
+            }
+            if (ans == true)
+                Toast.makeText(getActivity(), "Information added successfully", Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(getActivity(), "Sorry! Failed to add Information.", Toast.LENGTH_LONG).show();
+            System.out.println("Helo 123");
+            etname.setText("");
+            flatno.setText("");
+            etmobile.setText("");
+            etemail.setText("");
+            et2vech.setText("");
+            et4vech.setText("");
+            if (twoWheelerCount>0) {
+                for (int i = 1; i <= twoWheelerCount; i++) {
+                    vertl2.removeViewAt(i);
+                }
+                twoWheelerCount=0;
+            }
+            if (fourWheelerCount>0) {
+                for (int i = 1; i <= fourWheelerCount; i++) {
+                    vertll.removeViewAt(i);
+                }
+                pos=0;
+                fourWheelerCount=0;
+            }
+            disp();
+        } catch (Exception e) {
+            System.out.println(e.toString() + "2");
         }
-        showMessage("Data:\n", buffer.toString());
 
     }
 

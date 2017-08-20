@@ -14,6 +14,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -41,6 +42,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.List;
 
+import static com.example.parth.munimji.HomeFragment.myAdapter;
 import static com.example.parth.munimji.HomeFragment.viewPager;
 
 /**
@@ -154,9 +156,13 @@ public class MainActivity extends AppCompatActivity implements Dialogfragment_mo
 
             if(openFragment.matches("Owner Info")){
                 Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
-            }
+                    Addnewowner_index fragment = (Addnewowner_index) HomeFragment.myAdapter.getCurrentFragment();
+                    fragment.saveInfo();
+                }
             else if(openFragment.matches("Credits")){
                 Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+                Paymentin fragment = (Paymentin) HomeFragment.myAdapter.getCurrentFragment();
+                fragment.saveInfo();
             }
             else if(openFragment.matches("Debits")){
                 Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
