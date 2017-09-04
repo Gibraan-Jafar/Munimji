@@ -6,13 +6,19 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.opengl.Visibility;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import android.support.design.widget.NavigationView;
@@ -20,6 +26,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -32,6 +40,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.List;
+
+import static com.example.parth.munimji.HomeFragment.myAdapter;
+import static com.example.parth.munimji.HomeFragment.viewPager;
 
 /**
  * Created by Jauhar xlr on 4/18/2016.
@@ -45,6 +57,11 @@ public class MainActivity extends AppCompatActivity implements Dialogfragment_mo
     boolean doubleBackToExitPressedOnce = false;
     public static final int progress_bar_type = 0;
     android.support.v4.app.FragmentTransaction myFragmentTransaction;
+    HomeFragment homeFragment;
+
+    public String openFragment;
+
+    public MenuItem menuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +76,25 @@ public class MainActivity extends AppCompatActivity implements Dialogfragment_mo
          * Lets inflate the very first fragment
          * Here , we are inflating the HomeFragment as the first Fragment
          */
+        homeFragment = new HomeFragment();
+
         myFragmentManager = getSupportFragmentManager();
         myFragmentTransaction = myFragmentManager.beginTransaction();
-        myFragmentTransaction.replace(R.id.containerView, new HomeFragment(), "home").commit();
+        myFragmentTransaction.replace(R.id.containerView, homeFragment, "home").commit();
+
+        if(Build.VERSION.SDK_INT >= 21){
+
+        Window window = getWindow();
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this ,R.color.orange));}
+
         /**
          * Setup click events on the Navigation View Items.
          */
@@ -71,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements Dialogfragment_mo
                 myDrawerLayout.closeDrawers();
                 if (selectedMenuItem.getItemId() == R.id.nav_item_home) {
                     android.support.v4.app.FragmentTransaction fragmentTransaction = myFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView, new HomeFragment()).commit();
+                    fragmentTransaction.replace(R.id.containerView, homeFragment).commit();
                 }
                 if (selectedMenuItem.getItemId() == R.id.nav_FIX_DEPO) {
                    Intent i=new Intent(getApplicationContext(),Fix_depo.class);
@@ -103,6 +136,9 @@ public class MainActivity extends AppCompatActivity implements Dialogfragment_mo
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        //getItem(0) gets the SAVE button on the action bar
+        menuItem = (MenuItem) menu.getItem(0);
         return true;
     }
 
@@ -114,6 +150,52 @@ public class MainActivity extends AppCompatActivity implements Dialogfragment_mo
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if(id == R.id.action_save){
+
+            openFragment = String.valueOf(viewPager.getAdapter().getPageTitle(viewPager.getCurrentItem()));
+
+            if(openFragment.matches("Owner Info")){
+                Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+                    Addnewowner_index fragment = (Addnewowner_index) HomeFragment.myAdapter.getCurrentFragment();
+                    fragment.saveInfo();
+                }
+            else if(openFragment.matches("Credits")){
+                Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+                Paymentin fragment = (Paymentin) HomeFragment.myAdapter.getCurrentFragment();
+                fragment.saveInfo();
+            }
+            else if(openFragment.matches("Debits")){
+                Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+                Paymentout fragment = (Paymentout) HomeFragment.myAdapter.getCurrentFragment();
+                fragment.saveInfo();
+            }
+            else if(openFragment.matches("List Credits")){
+                Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+            }
+            else if(openFragment.matches("List Debits")){
+                Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+            }
+            else if(openFragment.matches("Tenant Info")){
+                Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+                Tenantinfo fragment = (Tenantinfo) HomeFragment.myAdapter.getCurrentFragment();
+                fragment.saveInfo();
+            }
+            else if(openFragment.matches("Company Info")){
+                Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+                Companyinfo fragment = (Companyinfo) HomeFragment.myAdapter.getCurrentFragment();
+                fragment.saveInfo();
+            }
+            else if(openFragment.matches("Helplines")){
+                Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+            }
+            else if(openFragment.matches("Mobile Nos")){
+                Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+            }
+            else if(openFragment.matches("Vehicle Info")){
+                Toast.makeText(this, openFragment, Toast.LENGTH_SHORT).show();
+            }
+
+        }
         if (id == R.id.action_settings) {
             Toast.makeText(getApplicationContext(), "settings", Toast.LENGTH_SHORT).show();
             Intent j = new Intent(this, Settings.class);

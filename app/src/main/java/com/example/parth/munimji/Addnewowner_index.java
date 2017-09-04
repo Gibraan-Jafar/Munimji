@@ -33,6 +33,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,7 +69,8 @@ public class Addnewowner_index extends Fragment {
     int mobilei, rowno;
     String mobile = "", flatno1 = "", name = "", tenant = "", email = "", vehicleInfo2 = "", vehicleInfo4="";
     TableLayout tbown;
-    Button bname, binfo, exp, bt_add_vechno, bt_add_2wheeler;
+    //Button bname, binfo, exp, bt_add_vechno, bt_add_2wheeler;
+    Button bt_add_vechno, bt_add_2wheeler;
     String dflatno, dmobile;
     int numvech;
     int choice;
@@ -83,11 +85,20 @@ public class Addnewowner_index extends Fragment {
     View rootView;
     TableLayout tb;
     ScrollView infoScroll;
+    MenuItem menuItem;
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menuItem = (MenuItem) menu.findItem(R.id.action_save);
+        menuItem.setVisible(true);
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.addnewowner, container, false);
+        setHasOptionsMenu(true);
         return rootView;
     }
 
@@ -99,11 +110,11 @@ public class Addnewowner_index extends Fragment {
         bt_add_vechno = (Button) view.findViewById(R.id.bt_addvech_newown);
         bt_add_2wheeler= (Button) view.findViewById(R.id.bt_addvech2_newown);
         infoScroll= (ScrollView) view.findViewById(R.id.scrollView1);
-        exp = (Button) view.findViewById(R.id.bt_exp_own);
+        //exp = (Button) view.findViewById(R.id.bt_exp_own);
         tb = (TableLayout) view.findViewById(R.id.index_own);
         //rgtenant = (RadioGroup) view.findViewById(R.id.rGtenant_own);
-        bname = (Button) view.findViewById(R.id.bt_insert);
-        binfo = (Button) view.findViewById(R.id.btinfo);
+        //bname = (Button) view.findViewById(R.id.bt_insert);
+        //binfo = (Button) view.findViewById(R.id.btinfo);
         etname = (EditText) view.findViewById(R.id.etname);
         flatno = (EditText) view.findViewById(R.id.et_flatno);
         etmobile = (EditText) view.findViewById(R.id.etmobile_own);
@@ -114,6 +125,8 @@ public class Addnewowner_index extends Fragment {
         tbown = (TableLayout) view.findViewById(R.id.index_own);
         tbown.setClickable(true);
         tvname = (TextView) view.findViewById(R.id.tvName_own);
+
+
 
         //mycode
 
@@ -218,7 +231,7 @@ public class Addnewowner_index extends Fragment {
 
 
 
-        exp.setOnClickListener(new View.OnClickListener() {
+        /*exp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -268,7 +281,7 @@ public class Addnewowner_index extends Fragment {
 
                 }
             }
-        });
+        });*/
 
 
         myDb = new DataBaseHelper(getActivity());
@@ -281,14 +294,14 @@ public class Addnewowner_index extends Fragment {
         disp(); ///for displaying elements
 
 
-        bname.setOnClickListener(new View.OnClickListener() {
+        /*bname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     int selectionid;
-                    /*Toast.makeText(getActivity()
-                            , etemail.getText().toString() + etnumvech.getText().toString() + etvechnum.getText()
-                                    .toString(), Toast.LENGTH_SHORT).show();*/
+                    //Toast.makeText(getActivity()
+                       //     , etemail.getText().toString() + etnumvech.getText().toString() + etvechnum.getText()
+                     //              .toString(), Toast.LENGTH_SHORT).show();
                     //selectionid = rgtenant.getCheckedRadioButtonId();
                     //rbtenant = (RadioButton) view.findViewById(selectionid);
                     //System.out.println("above tenant");
@@ -415,7 +428,119 @@ public class Addnewowner_index extends Fragment {
                 showMessage("Data:\n", buffer.toString());
             }
         });
+        */
         myDb.close();
+    }
+
+    public void saveInfo(){
+
+        try {
+            int selectionid;
+                    /*Toast.makeText(getActivity()
+                            , etemail.getText().toString() + etnumvech.getText().toString() + etvechnum.getText()
+                                    .toString(), Toast.LENGTH_SHORT).show();*/
+            //selectionid = rgtenant.getCheckedRadioButtonId();
+            //rbtenant = (RadioButton) view.findViewById(selectionid);
+            //System.out.println("above tenant");
+            //tenant = rbtenant.getText().toString();
+            //System.out.println("below tenant" + tenant);
+            mobile = etmobile.getText().toString().trim();
+            System.out.println("Mobile Number::"+mobile);
+            name = etname.getText().toString().trim();
+            flatno1 = flatno.getText().toString().trim();
+            email = etemail.getText().toString();
+            vehicleInfo2 = et2vech.getText().toString();
+            vehicleInfo4 = et4vech.getText().toString();
+            //System.out.println(fourWheeler[0].getText());
+            //numvech = Integer.parseInt(etnumvech.getText().toString().trim());
+            //System.out.println(pos);
+            email = etemail.getText().toString();
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), e.toString() + "1", Toast.LENGTH_LONG).show();
+            System.out.println(e.toString() + "1");
+        }
+        try {
+//                    if (flatno1.equals("") | mobile.equals("") | name.equals("") | email.equals("")) {
+            if (flatno1.equals("") | name.equals("")) {
+                error = true;
+            }
+            boolean ans;
+            if (error == true) {
+
+                ans = false;
+            } else {//mobile, tenant,email,numvech,vechno
+                int id = 0;
+                if (cbOccupancy.isChecked() )
+                    ans = myDb.tb_owner_ins(flatno1, name,"O");
+                else
+                    ans = myDb.tb_owner_ins(flatno1, name,"T");
+                //System.out.println(flatno1);
+                Cursor res2 = myDb.tb_owner_getid(String.valueOf(flatno1));
+                System.out.println(ans);
+
+                if (res2.moveToNext())
+                    id = res2.getInt(res2.getColumnIndex("id"));
+                System.out.println("Flat id:"+id);
+                boolean ans1=false,ans2=false,ans3=false,ans4=false;
+                if(ans==true)
+                {
+                    if (mobile.length()>0)  ans1 = myDb.tb_persinfo_ins(id, 1, mobile);        //1-mobile
+                    if (email.length()>0) ans2 = myDb.tb_persinfo_ins(id, 2, email);         //2-email
+                    if (vehicleInfo2.length()>0)
+                    {
+                        ans3 = myDb.tb_persinfo_ins(id, 3, vehicleInfo2);        //3-2 wheeler info.
+                        if (twoWheelerCount>0) {
+                            System.out.println("Two wheller count "+twoWheelerCount);
+                            for (int i = 0; i < twoWheelerCount; i++) {
+                                System.out.println(twoWheeler[i].getText().toString());
+                                ans3 = myDb.tb_persinfo_ins(id, 3, twoWheeler[i].getText().toString());
+                            }
+                        }
+                    }
+                    if (vehicleInfo4.length()>0)
+                    {
+                        ans4 = myDb.tb_persinfo_ins(id, 4, vehicleInfo4);   //4-4 wheeler info.
+                        if (fourWheelerCount>0) {
+                            System.out.println("Four wheller count "+fourWheelerCount);
+                            for (int i = 0; i < fourWheelerCount; i++) {
+                                System.out.println(fourWheeler[i].getText().toString());
+                                ans3 = myDb.tb_persinfo_ins(id, 4, fourWheeler[i].getText().toString());
+                            }
+                        }
+                    }
+                }
+                System.out.println("*" + ans1 + "*" + ans2 + "*" + ans3+ "*" + ans4);
+                //boolean ans1=myDb.tb_persinfo_ins()
+            }
+            if (ans == true)
+                Toast.makeText(getActivity(), "Information added successfully", Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(getActivity(), "Sorry! Failed to add Information.", Toast.LENGTH_LONG).show();
+            System.out.println("Helo 123");
+            etname.setText("");
+            flatno.setText("");
+            etmobile.setText("");
+            etemail.setText("");
+            et2vech.setText("");
+            et4vech.setText("");
+            if (twoWheelerCount>0) {
+                for (int i = 1; i <= twoWheelerCount; i++) {
+                    vertl2.removeViewAt(i);
+                }
+                twoWheelerCount=0;
+            }
+            if (fourWheelerCount>0) {
+                for (int i = 1; i <= fourWheelerCount; i++) {
+                    vertll.removeViewAt(i);
+                }
+                pos=0;
+                fourWheelerCount=0;
+            }
+            disp();
+        } catch (Exception e) {
+            System.out.println(e.toString() + "2");
+        }
+
     }
 
     public void showMessage(String title, String message) {

@@ -1,78 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Company name"
         android:id="@+id/tv44"
-        android:layout_marginTop="10dp"/>
+        android:layout_width="108dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Company name:"
+        android:textColor="#000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.041"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/et_companyname_cinfo"
-        android:layout_toRightOf="@+id/tv44"
-        android:layout_marginLeft="20dp"/>
+        android:layout_width="224dp"
+        android:layout_height="39dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/tv44"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.714" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tv45"
-        android:layout_below="@+id/tv44"
-        android:text="contact person"
-        android:layout_marginTop="30dp"/>
+        android:layout_width="108dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Contact Person:"
+        android:textColor="#000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/et_contactperson_cinfo"
+        app:layout_constraintTop_toBottomOf="@+id/tv44"
+        app:layout_constraintVertical_bias="0.053" />
+
     <EditText
         android:id="@+id/et_contactperson_cinfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_companyname_cinfo"
-        android:layout_toRightOf="@+id/tv45"
-        android:layout_marginLeft="30dp"/>
+        android:layout_width="224dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/et_companyname_cinfo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintVertical_bias="0.024" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tv46"
-        android:layout_below="@+id/tv45"
-        android:layout_marginTop="30dp"
-       android:text="Mobile NO" />
+        android:layout_width="108dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Mobile Number:"
+        android:textColor="#000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/et_contactphone_cinfo"
+        app:layout_constraintTop_toBottomOf="@+id/tv45"
+        app:layout_constraintVertical_bias="0.053" />
+
     <EditText
         android:id="@+id/et_contactphone_cinfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="224dp"
+        android:layout_height="39dp"
         android:inputType="number"
-        android:layout_below="@id/et_contactperson_cinfo"
-        android:layout_toRightOf="@+id/tv46"
-        android:layout_marginLeft="60dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv47"
-        android:text="Description"
-        android:layout_below="@+id/tv46"
-        android:layout_marginTop="30dp"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_desc_cinfo"
-        android:layout_below="@+id/et_contactphone_cinfo"
-        android:layout_toRightOf="@+id/tv47"
-        android:layout_marginLeft="60dp"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btsubmint_cinfo"
-        android:layout_below="@+id/et_desc_cinfo"
-        android:layout_toRightOf="@+id/tv47"
-        android:text="Submit"
-        android:layout_marginLeft="80dp"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btshow_cinfo"
-        android:text="show"
-        android:layout_below="@+id/et_desc_cinfo"
-        android:layout_toRightOf="@+id/btsubmint_cinfo"
-        />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/et_contactperson_cinfo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintVertical_bias="0.02" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tv47"
+        android:layout_width="108dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Description:"
+        android:textColor="#000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/et_desc_cinfo"
+        app:layout_constraintTop_toBottomOf="@+id/tv46"
+        app:layout_constraintVertical_bias="0.069" />
+
+    <EditText
+        android:id="@+id/et_desc_cinfo"
+        android:layout_width="224dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/et_contactphone_cinfo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintVertical_bias="0.031" />
+
+    <Button
+        android:id="@+id/btshow_cinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/orange"
+        android:text="show"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv47"
+        app:layout_constraintVertical_bias="0.258" />
+
+</android.support.constraint.ConstraintLayout>

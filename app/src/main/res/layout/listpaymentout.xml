@@ -4,75 +4,27 @@
     android:layout_height="fill_parent">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="from"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:id="@+id/textView"
-       android:layout_toRightOf="@+id/textView3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="to"
-        android:id="@+id/textView2"
-        android:layout_toRightOf="@+id/btdatepick_listpout"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="select year"
         android:id="@+id/textView3"
-        android:layout_below="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Year:"
+        android:textColor="#000"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_from_lispout"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_below="@+id/textView"
-        android:inputType="phone"
-
-       />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_to_listpout"
-        android:layout_below="@+id/textView2"
-        android:inputType="phone"
-  android:layout_toRightOf="@+id/btdatepick_listpout" />
-
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="f"
-        android:id="@+id/btdatepick_listpout"
-        android:layout_below="@+id/textView"
-        android:layout_toRightOf="@+id/et_from_lispout"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="t"
-        android:id="@+id/bt_to_listpout"
-        android:layout_alignBottom="@+id/btdatepick_listpout"
-        android:layout_toRightOf="@+id/et_to_listpout"
-        android:layout_toEndOf="@+id/et_to_listpout" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="submit"
         android:id="@+id/btsubmit_listpout"
-        android:layout_below="@+id/et_from_lispout"
-        android:layout_toLeftOf="@+id/et_to_listpout"
-        android:layout_toStartOf="@+id/et_to_listpout" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_to"
+        android:layout_marginTop="53dp"
+        android:layout_toEndOf="@+id/spinner_from"
+        android:layout_toRightOf="@+id/spinner_from"
+        android:background="@color/orange"
+        android:text="Submit "
+        android:textColor="#fff" />
 
     <HorizontalScrollView
         android:layout_width="fill_parent"
@@ -259,14 +211,56 @@
     </HorizontalScrollView>
 
     <Button
-        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/btexp_listpayout"
+        style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="export"
-        android:id="@+id/btexp_listpayout"
-        android:layout_below="@+id/bt_to_listpout"
-        android:layout_alignLeft="@+id/et_to_listpout"
-        android:layout_alignStart="@+id/et_to_listpout" />
+        android:layout_above="@+id/hsv_listpout"
+        android:layout_marginLeft="56dp"
+        android:layout_marginStart="56dp"
+        android:layout_toEndOf="@+id/textView3"
+        android:layout_toRightOf="@+id/textView3"
+        android:background="@color/orange"
+        android:text="Export "
+        android:textColor="#fff" />
+
+    <Spinner
+        android:id="@+id/spinner_to"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/spinner_from"
+        android:layout_toRightOf="@+id/textView28"
+        android:layout_toEndOf="@+id/textView28"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp" />
+
+    <Spinner
+        android:id="@+id/spinner_from"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/btexp_listpayout"
+        android:layout_alignStart="@+id/btexp_listpayout" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From:"
+        android:layout_alignTop="@+id/spinner_from"
+        android:layout_toLeftOf="@+id/spinner_from"
+        android:layout_toStartOf="@+id/spinner_from" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To:"
+        android:layout_alignTop="@+id/spinner_from"
+        android:layout_toRightOf="@+id/spinner_from"
+        android:layout_toEndOf="@+id/spinner_from"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp" />
 
 
 </RelativeLayout>

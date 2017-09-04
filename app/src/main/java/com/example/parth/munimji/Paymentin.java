@@ -17,6 +17,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -45,6 +48,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+
 /**
  * Created by parth on 11/5/16.
  */
@@ -61,7 +65,8 @@ public class Paymentin extends  Fragment{
     EditText etamount,etcheckno, etbranck,etransid,datepick,etcheckdate,etOnlineDate,etEntryDate;
     RelativeLayout rlcheque, rlonline;
     AutoCompleteTextView etmid;
-    Button btsubmit,btlist, btcheque,btcash,btonline,btdatepic,btcheckdate, btonlineDate;
+    Button btlist, btcheque,btcash,btonline,btdatepic,btcheckdate, btonlineDate;
+    //Button btsubmit;
     TextView tvPersonName;
     boolean error;
     String mid=null;
@@ -85,7 +90,7 @@ public class Paymentin extends  Fragment{
 
     List<String> categories = new ArrayList<String>();
 
-
+    MenuItem menuItem;
 
     @Nullable
 @Override
@@ -120,9 +125,24 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menuItem = menu.getItem(0);
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+//            menuItem.setVisible(true);
+        }
+        else {
+        }
+    }
+
+    @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
 
 
@@ -187,7 +207,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
         btonlineDate=(Button)view.findViewById(R.id.bt_online_date);
         btcheckdate=(Button)view.findViewById(R.id.bt_check_date_pin);
         //button for listing and submitting
-        btsubmit=(Button)view.findViewById(R.id.btsubmit_pin);
+        //btsubmit=(Button)view.findViewById(R.id.btsubmit_pin);
         //btlist=(Button)view.findViewById(R.id.bt_List_pin);
         //buttons for mode selection
         btcheque=(Button)view.findViewById(R.id.bt_cheque_pin);
@@ -429,7 +449,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
         });
         /// add date in the data base
 */
-        btsubmit.setOnClickListener(new View.OnClickListener() {
+        /*btsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try{
@@ -657,8 +677,235 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
                 }
                 catch(Exception e){Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_LONG).show();}
             }
-        });
+        }); */
         myDb.close();
     }
 
+    public void saveInfo(){
+        try{
+            try {//int selectedId = rg_quarter.getCheckedRadioButtonId();
+
+                // find the radiobutton by returned id
+                //rb_Quarter = (RadioButton) findViewById(selectedId);
+                mid = etmid.getText().toString().trim();
+                //System.out.println(mid);
+                Cursor cursor=myDb.tb_owner_getid(mid);
+                if(cursor.moveToNext())
+                    personid=cursor.getInt(cursor.getColumnIndex("id"));
+                // quarter=rb_Quarter.getText().toString();
+                // quarteri=Integer.parseInt(quarter);
+            }catch(Exception e)
+            {   error=true;
+                //System.out.println("error mid"+e.toString());
+            }
+            if(mode==1)
+            {
+                checkno=etcheckno.getText().toString().trim();
+
+            }
+            else if(mode==3)
+            {
+                transid=etransid.getText().toString().trim();
+            }
+            try {
+                amount = etamount.getText().toString();
+                amounti = Integer.parseInt(amount);
+            }catch(Exception e)
+            {       error=true;
+                //Toast.makeText(getActivity(),"error parsing data amount"+mode,Toast.LENGTH_SHORT).show();
+            }
+        }catch(Exception e)
+        {
+            Toast.makeText(getActivity(),"error parsing data from edittext1 amount or member id not mentioned"+mode,Toast.LENGTH_LONG).show();
+        }
+
+
+
+
+
+        if(mode==1)     //Cheque
+        {
+            try {
+                //checknoi=Integer.parseInt(checkno);
+                checknoi = checkno;
+                branch = etbranck.getText().toString().trim();
+                checkdated = etcheckdate.getText().toString().trim();
+                String a, b;
+                a = String.format("%02d", month1);
+                b = String.format("%02d", day1);
+                checkdated = year1 + "-" + a + "-" + b;
+
+            } catch (Exception e) {
+                error = true;
+//System.out.println(e.toString()+402);                }
+                transidi = 0;
+            }
+        }else if(mode==2)        //Cash
+
+        {   //Toast.makeText(getActivity(),amount , Toast.LENGTH_LONG).show();
+            checknoi="";
+            branch=null;
+        }
+        else if(mode==3)        //Online
+        {   try{
+            //checknoi=Integer.parseInt(transid);
+            checknoi=transid;
+
+            branch=null;
+            checkdated=etcheckdate.getText().toString().trim();
+            String a,b;
+            a = String.format("%02d", month1);
+            b = String.format("%02d", day1);
+            checkdated=year1+"-"+a+"-"+b;
+
+        }catch(Exception e)
+        {       error=true;
+            //Toast.makeText(getActivity(),"pls provide transid", Toast.LENGTH_LONG).show();
+        }
+
+        }
+        else
+        {
+            //Toast.makeText(getActivity(),"pls select mode of payment",Toast.LENGTH_LONG).show();
+        }
+        String months=null;
+        String days=null;
+        try {
+            try {
+                months = String.format("%02d", month);
+                days = String.format("%02d", day);
+            } catch (Exception e) {
+                error = true;
+                //Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
+            }
+
+            String date = year + "-" + months + "-" + days;
+
+            //Toast.makeText(getActivity(), "rrr" + mid + "*" + amounti + "*" + mode1 + "*" + checknoi + "*" + branch + "*" + transidi + "*" + date, Toast.LENGTH_LONG).show();
+            if (error == true) {
+                Toast.makeText(getActivity(), "error", Toast.LENGTH_LONG).show();
+            } else {
+                // public boolean insertData_tbpayin(int personid, int amount,String transdate, String mode, int checkno, String branch, String date,String ptype,String receipt)
+//                       String receipt="aaa";
+//                        boolean flag = myDb.insertData_tbpayin(personid, amounti,date, mode1, checknoi, branch, checkdated,ptype,receipt);
+                //DatePicker temp = (DatePicker) datepick.getText();
+
+                //System.out.println(temp.getYear()+" "+temp.getMonth()+ " "+temp.getDayOfMonth());
+                String[] tempDate = etEntryDate.getText().toString().split("-");
+                //System.out.println(tempDate[2]+"  "+tempDate[1]+"  "+tempDate[0]);
+                String finalDate = tempDate[2]+"-"+String.format("%02d", Integer.parseInt(tempDate[1]))+"-"+String.format("%02d", Integer.parseInt(tempDate[0]));
+                //System.out.println("1 EntryDate:"+etEntryDate.getText().toString().trim()+" Cheque Date:"+etcheckdate.getText().toString().trim()+" ID:-"+personid+ " Final Date:"+finalDate);
+                //boolean flag = myDb.insertData_tbpayin(personid, amounti,date, mode1, checknoi, branch, checkdated,ptype);
+                boolean flag = myDb.insertData_tbpayin(personid, amounti,finalDate, mode1, checknoi, branch, checkdated,ptype);
+//                        boolean flag = myDb.insertData_tbpayin(personid, amounti,etEntryDate.getText().toString().trim(), mode1, checknoi, branch, etcheckdate.getText().toString().trim(),ptype);
+//                        boolean flag = myDb.insertData_tbpayin(personid, amounti,etEntryDate.getText().toString().trim(), mode1, checknoi, branch, checkdated,ptype);
+                if (flag)
+                    Toast.makeText(getActivity(), "Added Data Successfully" , Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(getActivity(), "Sorry! Error while adding Data" , Toast.LENGTH_LONG).show();
+            }
+
+            etamount.setText("");
+            etmid.setText("");
+            if(mode==1)
+            {
+                etbranck.setText("");
+                etcheckno.setText("");
+            }
+            if(mode==3)
+            {etransid.setText("");}
+
+            AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+            builder.setTitle("want to generate receipt");
+            builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+
+            });
+            builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    try{
+                        final File exportDir;
+                        String state = Environment.getExternalStorageState();
+//check if the external directory is availabe for writing
+                        if (!Environment.MEDIA_MOUNTED.equals(state)) {
+                            return;
+                        }
+                        else {
+                            exportDir = new File(Environment.getExternalStorageDirectory() + File.separator + "abc");
+                        }
+
+//if the external storage directory does not exists, we create it
+                        if (!exportDir.exists()) {
+                            exportDir.mkdirs();
+                        }
+                        File file;
+                        file = new File(exportDir, "Budget.pdf");
+//PDF is a class of the PDFJET library
+                        PDF pdf= new PDF(new FileOutputStream(file));
+//instructions to create the pdf file content
+                        //first we create a page with portrait orientation
+                        Page page = new Page(pdf, Letter.PORTRAIT);
+
+//font of the title
+                        Font f1 = new Font(pdf, CoreFont.HELVETICA_BOLD);
+                        f1.setSize(7.0f);
+
+//title: font f1 and color blue
+                        TextLine title = new TextLine(f1, "RECEIPT");
+                        title.setFont(f1);
+                        title.setColor(Color.blue);
+
+//center the title horizontally on the page
+                        title.setPosition(page.getWidth()/2-title.getWidth()/2, 40f);
+
+//draw the title on the page
+                        title.drawOn(page);
+
+                        Font f2 = new Font(pdf, CoreFont.HELVETICA);
+                        f2.setSize(8);
+
+                        TextLine textLine = new TextLine(f2);
+                        textLine.setText("flatno="+mid);
+                        textLine.setColor(Color.black);
+                        textLine.setLocation(page.getWidth()/2-90,60f);
+                        textLine.drawOn(page);
+
+
+                        TextLine textLine1 = new TextLine(f2);
+                        textLine1.setText("AMOUNT="+amount);
+                        textLine1.setColor(Color.black);
+                        textLine1.setLocation(page.getWidth()/2-90,80f);
+                        textLine1.drawOn(page);
+
+                        TextLine textLine2 = new TextLine(f2);
+                        textLine2.setText("DATE="+day+"/"+month+"/"+year);
+                        textLine2.setColor(Color.black);
+                        textLine2.setLocation(page.getWidth()/2-90,100f);
+                        textLine2.drawOn(page);
+                        pdf.flush();
+
+
+                        Intent intent=new Intent();
+                        intent.setType("application/pdf");
+                        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+                        startActivity(intent);
+
+                    }catch (Exception e)
+                    {
+                        //System.out.println("receipterror");
+
+                    }
+                }
+
+            });
+            builder.show();
+        }
+        catch(Exception e){Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_LONG).show();}
+    }
 }
+

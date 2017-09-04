@@ -9,6 +9,9 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -21,12 +24,14 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+
+
 /**
  * Created by parth on 7/7/16.
  */
 public class Tenantinfo extends Fragment {
     int pos = 0;
-    Button btdatejoin,btdateleft,btsubmit,bt_add_vechno;
+    Button btdatejoin,btdateleft,bt_add_vechno;
     EditText etname,etleftdate,etjoindate,etmobile,etemail,etvechnum;
     AutoCompleteTextView etflatno;
     int year,month,day;//for date picker
@@ -34,6 +39,9 @@ public class Tenantinfo extends Fragment {
     String name;
     String flatno,mobile,email,vechnum;
     LinearLayout hzll, vertll;
+    //Button btsubmit;
+
+    MenuItem menuItem;
 
     int id,tid;
     String joindate,leftdate;
@@ -43,12 +51,23 @@ public class Tenantinfo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tenant_info,null);
-
+        setHasOptionsMenu(true);
         return rootView;
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menuItem = (MenuItem) menu.findItem(R.id.action_save);
+        menuItem.setVisible(true);
+    }
+
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+
+
         myDb=new DataBaseHelper(getActivity());
         super.onViewCreated(view, savedInstanceState);
         bt_add_vechno = (Button) view.findViewById(R.id.bt_addvech_newtenant);
@@ -62,7 +81,7 @@ public class Tenantinfo extends Fragment {
         etleftdate=(EditText)view.findViewById(R.id.et_leftdate_tenant);
         btdatejoin=(Button)view.findViewById(R.id.bt_joindate_tenant);
         btdateleft=(Button)view.findViewById(R.id.bt_leftdate_tenant);
-        btsubmit=(Button)view.findViewById(R.id.bt_submit_tenant);
+        //btsubmit=(Button)view.findViewById(R.id.bt_submit_tenant);
 
 
         vertll=(LinearLayout)view.findViewById(R.id.ly_add_numvech_tenant);
@@ -163,7 +182,7 @@ public class Tenantinfo extends Fragment {
 
             }
         });
-        btsubmit.setOnClickListener(new View.OnClickListener() {
+       /* btsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -212,7 +231,7 @@ public class Tenantinfo extends Fragment {
                     System.out.println(e.toString()+123);
                 }
             }
-        });
+        });*/
         Button bt=(Button)view.findViewById(R.id.bt_show_teant);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,6 +257,55 @@ public class Tenantinfo extends Fragment {
         });
         myDb.close();
     }
+
+    public void saveInfo(){
+        try {
+            name = etname.getText().toString().trim();
+            flatno = etflatno.getText().toString().trim();
+            email=etemail.getText().toString().trim();
+            mobile=etmobile.getText().toString().trim();
+            vechnum=etvechnum.getText().toString().trim();
+            Cursor cursor = myDb.tb_owner_getid(flatno);
+            if (cursor.moveToNext())
+                id = cursor.getInt(cursor.getColumnIndex("id"));
+
+
+
+            String a, b;
+            a = String.format("%02d", month);
+            b = String.format("%02d", day);
+
+            String a1, b1;
+            a1 = String.format("%02d", month1);
+            b1 = String.format("%02d", day1);
+
+            joindate = year + "-" + a + "-" + b;
+            leftdate = year1 + "-" + a1 + "-" + b1;
+
+            boolean ans1=false,ans2=false,ans3=false,ans = myDb.tb_tenant_ins(id, name, joindate, leftdate);
+            Cursor cursor1=myDb.tb_tenant_getid(id);
+            if (cursor1.moveToNext())
+                tid = cursor1.getInt(cursor1.getColumnIndex("tid"));
+            if(ans==true)
+            {
+                etflatno.setText("");
+                etname.setText("");
+                etmobile.setText("");
+                etvechnum.setText("");
+                etemail.setText("");
+
+                ans1 = myDb.tb_persinfo_ins(id, 1, mobile);
+                ans2 = myDb.tb_persinfo_ins(id, 2, email);
+                ans3 = myDb.tb_persinfo_ins(id, 3, vechnum);
+
+            }
+            Toast.makeText(getContext(),""+ans1+"*"+ans2+"*"+ans3,Toast.LENGTH_SHORT).show();
+        }catch (Exception e)
+        {
+            System.out.println(e.toString()+123);
+        }
+    }
+
     public void showMessage(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setCancelable(true);

@@ -4,11 +4,15 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/tv48"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv48"
+        android:layout_alignBaseline="@+id/et_desc_help"
+        android:layout_alignBottom="@+id/et_desc_help"
+        android:layout_toLeftOf="@+id/et_cno_help"
+        android:layout_toStartOf="@+id/et_cno_help"
         android:text="Description"
-        android:layout_marginTop="10dp"/>
+        android:textColor="#000" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,13 +20,15 @@
         android:layout_toRightOf="@+id/tv48"
         android:layout_marginLeft="30dp"
         />
+
     <TextView
+        android:id="@+id/tv49"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv49"
-        android:text="Contact NO"
         android:layout_below="@+id/tv48"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:text="Contact No:"
+        android:textColor="#000" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,29 +37,33 @@
         android:layout_below="@id/et_desc_help"
         android:layout_toRightOf="@+id/tv49"
         android:layout_marginLeft="30dp"/>
+
     <TextView
+        android:id="@+id/tv50"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv50"
         android:layout_below="@+id/tv49"
-        android:text="Email id:"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:text="Email:"
+        android:textColor="#000" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/et_email_help"
         android:inputType="textEmailAddress"
         android:layout_below="@+id/et_cno_help"
-        android:layout_toRightOf="@+id/tv50"
-        android:layout_marginLeft="40dp"/>
+        android:layout_alignLeft="@+id/et_desc_help"
+        android:layout_alignStart="@+id/et_desc_help" />
+
     <Button
+        android:id="@+id/bt_add_help"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADD"
-        android:id="@+id/bt_add_help"
         android:layout_below="@+id/et_email_help"
-        android:layout_toRightOf="@+id/tv50"
-        android:layout_marginLeft="60dp"/>
+        android:layout_centerHorizontal="true"
+        android:background="@color/orange"
+        android:text="ADD"
+        android:textColor="#fff" />
     <ScrollView
         android:layout_below="@+id/bt_add_help"
         android:layout_marginTop="20dp"
